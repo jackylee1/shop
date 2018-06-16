@@ -5,6 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+require('popper.js').default;
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -15,11 +16,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('navbar-component', require('./components/common/NavbarComponent.vue'));
+
+Vue.prototype.siteName = "Laravel";
 
 const app = new Vue({
-    el: '#app',
-    data: {
-        message: "Hello world!"
-    }
+    el: '#app'
 });

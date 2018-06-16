@@ -1,0 +1,154 @@
+.clear {
+  clear: both;
+}
+
+.site-header {
+  background-color: rgba(0, 0, 0, 0.85);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+.site-header a {
+  color: rgba(255, 255, 255, 0.7);
+  -webkit-transition: ease-in-out color .15s;
+  transition: ease-in-out color .15s;
+}
+
+.site-header a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.site-header .dropdown-menu.cart-menu,
+.site-header .dropdown-menu.user-menu {
+  left: unset;
+  right: 0;
+}
+
+.site-header .dropdown-menu.cart-menu {
+  min-width: 300px;
+}
+
+.site-header .dropdown-menu.cart-menu h1 {
+  font-size: 20px;
+  padding: 0px 10px 10px;
+  border-bottom: 1px solid #e8e7dd;
+}
+
+.site-header .dropdown-menu.cart-menu .cart-items {
+  max-height: 330px;
+  overflow-y: auto;
+}
+
+.site-header .dropdown-menu.cart-menu .cart-items .cart-item {
+  width: 100%;
+  border-bottom: 1px dashed #e8e7dd;
+  padding: 10px 10px 15px;
+}
+
+.site-header .dropdown-menu.cart-menu .cart-items .cart-item .item-image {
+  width: 60px;
+  height: 60px;
+  float: left;
+  text-align: center;
+}
+
+.site-header .dropdown-menu.cart-menu .cart-items .cart-item .item-image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.site-header .dropdown-menu.cart-menu .cart-items .cart-item .item-info {
+  margin-left: 70px;
+  display: block;
+  clear: both;
+  float: left;
+  margin-top: -60px;
+  position: relative;
+  width: -webkit-fill-available;
+}
+
+.site-header .dropdown-menu.cart-menu .cart-items .cart-item .item-info a {
+  font-size: 14px;
+  overflow: hidden;
+  max-height: 66px;
+  word-wrap: break-word;
+  display: block;
+  position: relative;
+}
+
+.site-header .dropdown-menu.cart-menu .cart-items .cart-item .item-info a.remove-item {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  font-size: 12px;
+  display: none;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  z-index: 1;
+}
+
+.site-header .dropdown-menu.cart-menu .cart-items .cart-item .item-info a:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50px;
+  height: 12px;
+  background: -webkit-gradient(linear, , from(rgba(255, 255, 255, 0)), color-stop(100%, #fff), color-stop(10%, #fff), to(#fff));
+  background: linear-gradient("to bottom", rgba(255, 255, 255, 0), #fff 100%, #fff 10%, #fff);
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+99&0+0,1+49 */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(49%, white), color-stop(99%, white));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 49%, white 99%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+  /* IE6-9 */
+}
+
+.site-header .dropdown-menu.cart-menu .cart-items .cart-item .item-info .item-info-footer {
+  margin-top: 10px;
+}
+
+.site-header .dropdown-menu.cart-menu .cart-items .cart-item .item-info .item-info-footer p,
+.site-header .dropdown-menu.cart-menu .cart-items .cart-item .item-info .item-info-footer .count {
+  margin: 0;
+  float: left;
+  font-size: 14px;
+}
+
+.site-header .dropdown-menu.cart-menu .cart-items .cart-item .item-info .item-info-footer .count {
+  float: right;
+}
+
+.site-header .dropdown-menu.cart-menu .cart-items .cart-item .item-info .item-info-footer .count a {
+  color: #000;
+  font-size: 9px;
+  display: inline-block;
+}
+
+.site-header .dropdown-menu.cart-menu .cart-items .cart-item .item-info .item-info-footer .count b {
+  font-size: 14px;
+  display: inline-block;
+}
+
+.site-header .dropdown-menu.cart-menu .cart-items .cart-item:hover .item-info a.remove-item {
+  display: block;
+}
+
+.site-header .dropdown-menu.cart-menu .btn-sm:hover {
+  color: #fff;
+}
+
+.site-header .dropdown-menu a {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.site-header .dropdown-menu a:hover {
+  color: #000;
+}
+
