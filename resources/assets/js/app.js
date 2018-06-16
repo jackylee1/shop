@@ -16,7 +16,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('navbar-component', require('./components/common/NavbarComponent.vue'));
+Vue.component('navbar', require('./components/common/NavbarComponent.vue'));
+Vue.component('user-login', require('./components/user/LoginComponent.vue'));
 
 Vue.prototype.siteName = "Laravel";
 

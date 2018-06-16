@@ -13889,7 +13889,8 @@ window.Vue = __webpack_require__(36);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('navbar-component', __webpack_require__(39));
+Vue.component('navbar', __webpack_require__(39));
+Vue.component('user-login', __webpack_require__(66));
 
 Vue.prototype.siteName = "Laravel";
 
@@ -47820,13 +47821,146 @@ if (false) {
 /* 43 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: Missing binding D:\\openserver\\domains\\evention\\node_modules\\node-sass\\vendor\\win32-x64-64\\binding.node\nNode Sass could not find a binding for your current environment: Windows 64-bit with Node.js 10.x\n\nFound bindings for the following environments:\n  - Windows 64-bit with Node.js 6.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass --force` to build the binding for your current environment.\n    at module.exports (D:\\openserver\\domains\\evention\\node_modules\\node-sass\\lib\\binding.js:15:13)\n    at Object.<anonymous> (D:\\openserver\\domains\\evention\\node_modules\\node-sass\\lib\\index.js:14:35)\n    at Module._compile (internal/modules/cjs/loader.js:702:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:713:10)\n    at Module.load (internal/modules/cjs/loader.js:612:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:551:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:543:3)\n    at Module.require (internal/modules/cjs/loader.js:650:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at Object.<anonymous> (D:\\openserver\\domains\\evention\\node_modules\\sass-loader\\lib\\loader.js:3:14)\n    at Module._compile (internal/modules/cjs/loader.js:702:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:713:10)\n    at Module.load (internal/modules/cjs/loader.js:612:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:551:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:543:3)\n    at Module.require (internal/modules/cjs/loader.js:650:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:13:17)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at runLoaders (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\NormalModule.js:195:19)\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:364:11\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:170:18\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:27:11)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at runLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:362:2)\n    at NormalModule.doBuild (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\NormalModule.js:182:3)\n    at NormalModule.build (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\NormalModule.js:275:15)\n    at Compilation.buildModule (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\Compilation.js:157:10)\n    at moduleFactory.create (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\Compilation.js:460:10)\n    at factory (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\NormalModuleFactory.js:243:5)\n    at applyPluginsAsyncWaterfall (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\NormalModuleFactory.js:94:13)\n    at D:\\openserver\\domains\\evention\\node_modules\\tapable\\lib\\Tapable.js:268:11\n    at NormalModuleFactory.params.normalModuleFactory.plugin (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\CompatibilityPlugin.js:52:5)\n    at NormalModuleFactory.applyPluginsAsyncWaterfall (D:\\openserver\\domains\\evention\\node_modules\\tapable\\lib\\Tapable.js:272:13)\n    at resolver (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\NormalModuleFactory.js:69:10)\n    at process.nextTick (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\NormalModuleFactory.js:196:7)\n    at process._tickCallback (internal/process/next_tick.js:61:11)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 44 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: Missing binding D:\\openserver\\domains\\evention\\node_modules\\node-sass\\vendor\\win32-x64-64\\binding.node\nNode Sass could not find a binding for your current environment: Windows 64-bit with Node.js 10.x\n\nFound bindings for the following environments:\n  - Windows 64-bit with Node.js 6.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass --force` to build the binding for your current environment.\n    at module.exports (D:\\openserver\\domains\\evention\\node_modules\\node-sass\\lib\\binding.js:15:13)\n    at Object.<anonymous> (D:\\openserver\\domains\\evention\\node_modules\\node-sass\\lib\\index.js:14:35)\n    at Module._compile (internal/modules/cjs/loader.js:702:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:713:10)\n    at Module.load (internal/modules/cjs/loader.js:612:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:551:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:543:3)\n    at Module.require (internal/modules/cjs/loader.js:650:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at Object.<anonymous> (D:\\openserver\\domains\\evention\\node_modules\\sass-loader\\lib\\loader.js:3:14)\n    at Module._compile (internal/modules/cjs/loader.js:702:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:713:10)\n    at Module.load (internal/modules/cjs/loader.js:612:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:551:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:543:3)\n    at Module.require (internal/modules/cjs/loader.js:650:17)\n    at require (internal/modules/cjs/helpers.js:20:18)\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:13:17)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at runLoaders (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\NormalModule.js:195:19)\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:364:11\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:170:18\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:27:11)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at runLoaders (D:\\openserver\\domains\\evention\\node_modules\\loader-runner\\lib\\LoaderRunner.js:362:2)\n    at NormalModule.doBuild (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\NormalModule.js:182:3)\n    at NormalModule.build (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\NormalModule.js:275:15)\n    at Compilation.buildModule (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\Compilation.js:157:10)\n    at moduleFactory.create (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\Compilation.js:460:10)\n    at factory (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\NormalModuleFactory.js:243:5)\n    at applyPluginsAsyncWaterfall (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\NormalModuleFactory.js:94:13)\n    at D:\\openserver\\domains\\evention\\node_modules\\tapable\\lib\\Tapable.js:268:11\n    at NormalModuleFactory.params.normalModuleFactory.plugin (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\CompatibilityPlugin.js:52:5)\n    at NormalModuleFactory.applyPluginsAsyncWaterfall (D:\\openserver\\domains\\evention\\node_modules\\tapable\\lib\\Tapable.js:272:13)\n    at resolver (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\NormalModuleFactory.js:69:10)\n    at process.nextTick (D:\\openserver\\domains\\evention\\node_modules\\webpack\\lib\\NormalModuleFactory.js:196:7)\n    at process._tickCallback (internal/process/next_tick.js:61:11)");
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = __webpack_require__(67)
+/* template */
+var __vue_template__ = __webpack_require__(68)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\user\\LoginComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-71076244", Component.options)
+  } else {
+    hotAPI.reload("data-v-71076244", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            status: false
+        };
+    },
+
+    methods: {
+        login: function login() {
+            axios.post('/login', {
+                email: "maks.best5@mail.ru",
+                password: "maksa988",
+                remember: true
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "a",
+      {
+        staticClass: "btn btn-default",
+        attrs: { href: "#" },
+        on: { click: _vm.login }
+      },
+      [_vm._v("Login")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-71076244", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
