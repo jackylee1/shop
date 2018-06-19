@@ -24,3 +24,14 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('/user/register', "UserController@register")->name('user.register');
 });
 
+Route::get('/category/all', "CategoryController@getCategories")->name('category.all');
+Route::get('/category/{id}', "CategoryController@getCategory")
+                        ->name('category.info')->where('id', '[0-9]+');
+
+Route::get('/category/create', "CategoryController@createCategory")->name('category.create');
+
+Route::prefix('json')->group(function () {
+    Route::get('/category/all', "CategoryController@getCategoriesJson")->name('category.all.json');
+    Route::get('/category/{id}', "CategoryController@getCategoryJson")
+                        ->name('category.info.json')->where('id', '[0-9]+');
+});

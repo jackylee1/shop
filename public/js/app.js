@@ -14282,8 +14282,8 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-__webpack_require__(65);
-module.exports = __webpack_require__(66);
+__webpack_require__(68);
+module.exports = __webpack_require__(69);
 
 
 /***/ }),
@@ -14326,7 +14326,8 @@ Vue.component('footer-c', __webpack_require__(49));
 Vue.component('user-login', __webpack_require__(55));
 Vue.component('user-register', __webpack_require__(60));
 
-Vue.prototype.siteName = "Laravel";
+Vue.component('category-all', __webpack_require__(65));
+Vue.component('category-info', __webpack_require__(92));
 
 var app = new Vue({
   el: '#app'
@@ -48837,122 +48838,134 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("footer", { staticClass: "pt-4 my-md-5 pt-md-5 border-top" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12 col-md" }, [
+          _c("small", { staticClass: "d-block mb-3 text-muted" }, [
+            _vm._v("© " + _vm._s(new Date().getFullYear()))
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2)
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("footer", { staticClass: "pt-4 my-md-5 pt-md-5 border-top" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12 col-md" }, [
-            _c("small", { staticClass: "d-block mb-3 text-muted" }, [
-              _vm._v("© 2017-2018")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-md" }, [
-            _c("h5", [_vm._v("Features")]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "list-unstyled text-small" }, [
-              _c("li", [
-                _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
-                  _vm._v("Cool stuff")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
-                  _vm._v("Random feature")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
-                  _vm._v("Team feature")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
-                  _vm._v("Stuff for developers")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
-                  _vm._v("Another one")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
-                  _vm._v("Last time")
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-md" }, [
-            _c("h5", [_vm._v("Resources")]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "list-unstyled text-small" }, [
-              _c("li", [
-                _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
-                  _vm._v("Resource")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
-                  _vm._v("Resource name")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
-                  _vm._v("Another resource")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
-                  _vm._v("Final resource")
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6 col-md" }, [
-            _c("h5", [_vm._v("About")]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "list-unstyled text-small" }, [
-              _c("li", [
-                _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
-                  _vm._v("Team")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
-                  _vm._v("Locations")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
-                  _vm._v("Privacy")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("li", [
-                _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
-                  _vm._v("Terms")
-                ])
-              ])
-            ])
+    return _c("div", { staticClass: "col-6 col-md" }, [
+      _c("h5", [_vm._v("Features")]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "list-unstyled text-small" }, [
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Cool stuff")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Random feature")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Team feature")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Stuff for developers")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Another one")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Last time")
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6 col-md" }, [
+      _c("h5", [_vm._v("Resources")]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "list-unstyled text-small" }, [
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Resource")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Resource name")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Another resource")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Final resource")
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6 col-md" }, [
+      _c("h5", [_vm._v("About")]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "list-unstyled text-small" }, [
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Team")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Locations")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Privacy")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "text-muted", attrs: { href: "#" } }, [
+            _vm._v("Terms")
           ])
         ])
       ])
@@ -49803,15 +49816,534 @@ if (false) {
 
 /***/ }),
 /* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(90)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(66)
+/* template */
+var __vue_template__ = __webpack_require__(67)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\category\\AllComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7e3c06d3", Component.options)
+  } else {
+    hotAPI.reload("data-v-7e3c06d3", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            children: {}
+        };
+    }
+});
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container category-all" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-12" }, [
+          _c("h1", [_vm._v("Категории")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-3" }, [
+          _c("div", { staticClass: "list-group" }, [
+            _c("a", { staticClass: "list-group-item", attrs: { href: "/" } }, [
+              _vm._v("Видеонаблюдение (8)")
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "list-group-item", attrs: { href: "/" } }, [
+              _vm._v("   - Видеокамеры (4)")
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "list-group-item", attrs: { href: "/" } }, [
+              _vm._v("   - Видеорегистраторы (4)")
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "list-group-item", attrs: { href: "/" } }, [
+              _vm._v("Сигнализация (6)")
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "list-group-item", attrs: { href: "/" } }, [
+              _vm._v("Системы оповещения (6)")
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7e3c06d3", module.exports)
+  }
+}
+
+/***/ }),
+/* 68 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 66 */
+/* 69 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(91);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("2eb3937b", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7e3c06d3\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AllComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7e3c06d3\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AllComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.category-all {\r\n    margin-top: 50px;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(93)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(95)
+/* template */
+var __vue_template__ = __webpack_require__(96)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\category\\InfoComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-30827df0", Component.options)
+  } else {
+    hotAPI.reload("data-v-30827df0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(94);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(5)("05aafdce", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-30827df0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./InfoComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-30827df0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./InfoComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.category-info {\r\n    margin-top: 50px;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 95 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            name: "Загрузка...",
+            children: {}
+        };
+    },
+
+    props: ['categoryid'],
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get("/json/category/" + this.categoryid).then(function (response) {
+            _this.name = response.data.name;
+            _this.children = response.data.children;
+        });
+    }
+});
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container category-info" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c("h1", [_vm._v(_vm._s(_vm.name))]),
+        _vm._v(" "),
+        _c("hr")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c(
+          "div",
+          { staticClass: "list-group" },
+          _vm._l(_vm.children, function(category) {
+            return _c(
+              "a",
+              {
+                staticClass: "list-group-item",
+                attrs: { href: "/category/" + category.id }
+              },
+              [_vm._v(_vm._s(category.name))]
+            )
+          })
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-9" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "product-layout product-grid col-lg-4 col-md-4 col-sm-6 col-xs-12"
+        },
+        [
+          _c("div", { staticClass: "product-thumb" }, [
+            _c("div", { staticClass: "image" }, [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href:
+                      "http://shop.maksa988.su/index.php?route=product/product&path=62&product_id=60"
+                  }
+                },
+                [
+                  _c("img", {
+                    staticClass: "img-responsive",
+                    attrs: {
+                      src:
+                        "http://shop.maksa988.su/image/cache/catalog/998551195_w640_h640_007a481f184f05__716cd84d8b-228x228.jpg",
+                      alt: "2Мп IP видеокамера Hikvision DS-2CD1121-I (2.8 мм)",
+                      title:
+                        "2Мп IP видеокамера Hikvision DS-2CD1121-I (2.8 мм)"
+                    }
+                  })
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", { staticClass: "caption" }, [
+                _c("h4", [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href:
+                          "http://shop.maksa988.su/index.php?route=product/product&path=62&product_id=60"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "2Мп IP видеокамера Hikvision DS-2CD1121-I (2.8 мм)"
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v("..")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "price" }, [
+                  _vm._v(
+                    "\n                                5500руб.                                                    "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "button-group" }, [
+                _c(
+                  "button",
+                  {
+                    attrs: { type: "button", onclick: "cart.add('60', '1');" }
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-shopping-cart" }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      { staticClass: "hidden-xs hidden-sm hidden-md" },
+                      [_vm._v("Купить")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    attrs: {
+                      type: "button",
+                      "data-toggle": "tooltip",
+                      title: "",
+                      onclick: "wishlist.add('60');",
+                      "data-original-title": "В закладки"
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-heart" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    attrs: {
+                      type: "button",
+                      "data-toggle": "tooltip",
+                      title: "",
+                      onclick: "compare.add('60');",
+                      "data-original-title": "В сравнение"
+                    }
+                  },
+                  [_c("i", { staticClass: "fa fa-exchange" })]
+                )
+              ])
+            ])
+          ])
+        ]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-30827df0", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

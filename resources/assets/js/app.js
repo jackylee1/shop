@@ -18,7 +18,7 @@ var config = {
     axios: axios,
     queryString: queryString,
     csrf_token: document.head.querySelector("[name=csrf-token]").content
-}
+};
 
 Vue.use(VueRouteLaravel, config);
 
@@ -34,7 +34,8 @@ Vue.component('footer-c', require('./components/common/FooterComponent.vue'));
 Vue.component('user-login', require('./components/user/LoginComponent.vue'));
 Vue.component('user-register', require('./components/user/RegisterComponent.vue'));
 
-Vue.prototype.siteName = "Laravel";
+Vue.component('category-all', require('./components/category/AllComponent.vue'));
+Vue.component('category-info', require('./components/category/InfoComponent.vue'));
 
 const app = new Vue({
     el: '#app'
