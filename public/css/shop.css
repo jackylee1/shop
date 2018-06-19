@@ -140,15 +140,58 @@
   display: block;
 }
 
+.site-header .dropdown-menu.cart-menu .btn-sm {
+  color: rgba(255, 255, 255, 0.8);
+}
+
 .site-header .dropdown-menu.cart-menu .btn-sm:hover {
   color: #fff;
 }
 
 .site-header .dropdown-menu a {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .site-header .dropdown-menu a:hover {
   color: #000;
+}
+
+.site-header .dropdown-menu a:focus {
+  color: #fff;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-control {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 

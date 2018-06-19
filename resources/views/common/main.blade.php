@@ -13,8 +13,9 @@
     </head>
     <body>
         <div id="app">
-            <navbar></navbar>
+            <navbar @if(Auth::check()) username="{{ Auth::user()->name }} {{ Auth::user()->surname }}"@endif></navbar>
             @yield('content')
+            <footer-c></footer-c>
         </div>
     </body>
     <script src="{{ asset('js/app.js') }}"></script>

@@ -1,7 +1,21 @@
 <template>
     <div class="container">
-        <form class="form-signin" @submit.prevent="login">
-            <h1 class="h3 mb-3 font-weight-normal">Вход в личный кабинет</h1>
+        <form class="form-signup" @submit.prevent="register">
+            <h1 class="h3 mb-3 font-weight-normal">Регистрация аккаунта</h1>
+            <div class="input-group">
+                <label class="sr-only">Имя</label>
+                <input type="text" name="name" v-bind:class="{ 'is-invalid': errors.name.status, 'form-control': true }" placeholder="Имя" v-model="userdata.name" required autofocus>
+                <div class="invalid-tooltip">
+                    {{ errors.name.message }}
+                </div>
+            </div>
+            <div class="input-group">
+                <label class="sr-only">Фамилия</label>
+                <input type="text" name="surname" v-bind:class="{ 'is-invalid': errors.surname.status, 'form-control': true }" placeholder="Фамилия" v-model="userdata.surname" required autofocus>
+                <div class="invalid-tooltip">
+                    {{ errors.surname.message }}
+                </div>
+            </div>
             <div class="input-group">
                 <label class="sr-only">Email адрес</label>
                 <input type="email" name="email" v-bind:class="{ 'is-invalid': errors.email.status, 'form-control': true }" placeholder="Email адрес" v-model="userdata.email" required autofocus>
@@ -11,17 +25,16 @@
             </div>
             <div class="input-group">
                 <label class="sr-only">Пароль</label>
-                <input type="password" name="password" v-bind:class="{ 'is-invalid': errors.password.status, 'form-control': true }" placeholder="Пароль" v-model="userdata.password" required>
+                <input type="password" name="password" class="form-control" placeholder="Пароль" v-model="userdata.password" required>
+            </div>
+            <div class="input-group">
+                <label class="sr-only">Пароль</label>
+                <input type="password" name="password_confirmation" v-bind:class="{ 'is-invalid': errors.password.status, 'form-control': true }" placeholder="Повторите пароль" v-model="userdata.password_confirmation" required>
                 <div class="invalid-tooltip">
                     {{ errors.password.message }}
                 </div>
             </div>
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" name="remember" v-model="userdata.remember"> Запомнить меня
-                </label>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегестрироваться</button>
         </form>
     </div>
 </template>
@@ -32,9 +45,11 @@
             return {
                 status: false,
                 userdata: {
+                    name: undefined,
+                    surname: undefined,
                     email: undefined,
                     password: undefined,
-                    remember: undefined,
+                    password_confirmation: undefined,
                 },
                 errors: {
                     password: {
@@ -42,6 +57,14 @@
                         message: undefined,
                     },
                     email: {
+                        status: false,
+                        message: undefined,
+                    },
+                    name: {
+                        status: false,
+                        message: undefined,
+                    },
+                    surname: {
                         status: false,
                         message: undefined,
                     }
@@ -54,11 +77,20 @@
             },
             'userdata.password'(newVal, oldVal) {
                 this.errors.password.status = false;
+            },
+            'userdata.password_confirmation'(newVal, oldVal) {
+                this.errors.password.status = false;
+            },
+            'userdata.name'(newVal, oldVal) {
+                this.errors.name.status = false;
+            },
+            'userdata.surname'(newVal, oldVal) {
+                this.errors.surname.status = false;
             }
         },
         methods: {
-            login() {
-                axios.post('/login', this.userdata).then((response) => {
+            register() {
+                axios.post('/register', this.userdata).then((response) => {
                     console.log(response);
                 }).catch((error) => {
                     var errors = error.response;
@@ -74,6 +106,10 @@
                                 this.errors.password.status = true;
                                 this.errors.password.message = _.isArray(errors.data.errors.password) ? errors.data.errors.password[0] : errors.data.errors.password;
                             }
+                            if(errors.data.errors.name) {
+                                this.errors.name.status = true;
+                                this.errors.name.message = _.isArray(errors.data.errors.name) ? errors.data.errors.name[0] : errors.data.errors.name;
+                            }
                         }
                     }
                 });
@@ -83,35 +119,28 @@
 </script>
 
 <style>
-.form-signin {
+.form-signup {
   width: 100%;
   max-width: 400px;
   padding: 15px;
   margin: auto;
   margin-top: 50px;
 }
-.form-signin .checkbox {
+.form-signup .checkbox {
   font-weight: 400;
   margin-top: 15px;
 }
-.form-signin .form-control {
+.form-signup .form-control {
   position: relative;
   box-sizing: border-box;
   height: auto;
   padding: 10px;
   font-size: 16px;
 }
-.form-signin .form-control:focus {
+.form-signup .form-control:focus {
   z-index: 2;
 }
-
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-}
-.form-signin input[type="password"] {
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
+.form-signup .btn {
+    margin-top: 20px;
 }
 </style>

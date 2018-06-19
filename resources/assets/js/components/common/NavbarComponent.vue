@@ -44,7 +44,7 @@
                                             <img :src="item.item_image">
                                         </a>
                                         <div class="item-info">
-                                            <a :href="item.item_url" class="remove-item" @click="addItem">
+                                            <a :href="item.item_url" class="remove-item" @click.stop="addItem">
                                                 <i class="fa fa-trash-alt"></i>
                                             </a>
                                             <a :href="item.item_url">
@@ -67,13 +67,13 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item" v-if="!logged">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item" v-if="!user.logged">
+                            <a class="nav-link" href="/user/login">
                                 <i class="fa fa-user"></i>
                                 Личный кабинет
                             </a>
                         </li>
-                        <li class="nav-item dropdown" v-if="logged">
+                        <li class="nav-item dropdown" v-if="user.logged">
                             <a class="nav-link dropdown-toggle" href="#" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user"></i>
                                 {{ user.name }}
@@ -95,8 +95,8 @@
     export default {
         data() {
             return {
-                logged: false,
                 user: {
+                    logged: false,
                     name: undefined,
                 },
                 bookmarks: {
@@ -118,10 +118,15 @@
                 search: undefined
             }
         },
-        props: ['title'],
+        props: ['username'],
         mounted() {
             $('[data-toggle="tooltip"]').tooltip();
             this.count();
+
+            if(this.username != undefined) {
+                this.user.logged = true;
+                this.user.name = this.username;
+            }
         },
         watch: {
             cart: function(val) {

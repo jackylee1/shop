@@ -25,11 +25,17 @@
         @import "./cart";
     }
 
-    .dropdown-menu a {
-        color: rgba(0, 0, 0, 0.5);
-    }
+    .dropdown-menu {
+        a {
+            color: rgba(0, 0, 0, 0.7);
+        }
 
-    .dropdown-menu a:hover {
-        color: #000;
+        a:hover {
+            color: #000;
+        }
+
+        a:focus {
+            color: #fff;
+        }
     }
 }

@@ -10,6 +10,18 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+window.VueRouteLaravel = require('vue-route-laravel');
+window.queryString = require('query-string');
+
+var config = {
+    baseroute: '/',
+    axios: axios,
+    queryString: queryString,
+    csrf_token: document.head.querySelector("[name=csrf-token]").content
+}
+
+Vue.use(VueRouteLaravel, config);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -17,7 +29,10 @@ window.Vue = require('vue');
  */
 
 Vue.component('navbar', require('./components/common/NavbarComponent.vue'));
+Vue.component('footer-c', require('./components/common/FooterComponent.vue'));
+
 Vue.component('user-login', require('./components/user/LoginComponent.vue'));
+Vue.component('user-register', require('./components/user/RegisterComponent.vue'));
 
 Vue.prototype.siteName = "Laravel";
 
