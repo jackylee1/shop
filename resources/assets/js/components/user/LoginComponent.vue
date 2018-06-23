@@ -16,11 +16,12 @@
                     {{ errors.password.message }}
                 </div>
             </div>
-            <div class="checkbox mb-3">
+            <div class="checkbox">
                 <label>
                     <input type="checkbox" name="remember" v-model="userdata.remember"> Запомнить меня
                 </label>
             </div>
+            <a href="/user/register" class="btn btn-link btn-block">Еще не зарегестрированы?</a>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
         </form>
     </div>
@@ -81,37 +82,3 @@
         },
     }
 </script>
-
-<style>
-.form-signin {
-  width: 100%;
-  max-width: 400px;
-  padding: 15px;
-  margin: auto;
-  margin-top: 50px;
-}
-.form-signin .checkbox {
-  font-weight: 400;
-  margin-top: 15px;
-}
-.form-signin .form-control {
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-
-.form-signin input[type="email"] {
-    margin-bottom: -1px;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-}
-.form-signin input[type="password"] {
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-</style>

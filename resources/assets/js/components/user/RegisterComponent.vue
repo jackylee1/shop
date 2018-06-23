@@ -117,30 +117,3 @@
         },
     }
 </script>
-
-<style>
-.form-signup {
-  width: 100%;
-  max-width: 400px;
-  padding: 15px;
-  margin: auto;
-  margin-top: 50px;
-}
-.form-signup .checkbox {
-  font-weight: 400;
-  margin-top: 15px;
-}
-.form-signup .form-control {
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signup .form-control:focus {
-  z-index: 2;
-}
-.form-signup .btn {
-    margin-top: 20px;
-}
-</style>

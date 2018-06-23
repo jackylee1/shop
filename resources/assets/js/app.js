@@ -37,6 +37,8 @@ Vue.component('user-register', require('./components/user/RegisterComponent.vue'
 Vue.component('category-all', require('./components/category/AllComponent.vue'));
 Vue.component('category-info', require('./components/category/InfoComponent.vue'));
 
+Vue.component('product-item', require('./components/product/ItemComponent.vue'));
+
 const app = new Vue({
     el: '#app'
 });
