@@ -24,24 +24,21 @@
         data() {
             return {
                 name: "Загрузка...",
-                children: {},
-                products: [
-                    {
-                        name: "Холодильник",
-                        image: "https://cdn.27.ua/main/91b/sanf.jpg",
-                    },
-                    {
-                        name: "Микроволновка",
-                        image: "https://cdn.27.ua/190/b3/e2/373730_5.jpeg",
-                    }
-                ]
+                children: [],
+                products: []
             };
         },
         props: ['categoryid'],
         mounted() {
             axios.get(`/json/category/${this.categoryid}`).then((response) => {
                 this.name = response.data.name;
-                this.children = response.data.children;
+                this.children = response.data.children_with_products;
+
+                this.products = response.data.products;
+
+                for(let i = 0; i < this.children.length; i++) {
+                    this.products = this.products.concat(this.children[i].products);
+                }
             });
         }
     }

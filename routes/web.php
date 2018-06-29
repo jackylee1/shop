@@ -24,11 +24,20 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('/user/register', "UserController@register")->name('user.register');
 });
 
-Route::get('/category/all', "CategoryController@getCategories")->name('category.all');
-Route::get('/category/{id}', "CategoryController@getCategory")
-                        ->name('category.info')->where('id', '[0-9]+');
+Route::prefix('category')->group(function() {
+    Route::get('/all', "CategoryController@getCategories")->name('category.all');
+    Route::get('/{id}', "CategoryController@getCategory")
+        ->name('category.info')->where('id', '[0-9]+');
 
-Route::get('/category/create', "CategoryController@createCategory")->name('category.create');
+    Route::get('/create', "CategoryController@createCategory")->name('category.create');
+});
+
+Route::prefix('product')->group(function() {
+    Route::get('/{id}', "ProductController@getProductInfo")
+        ->name('product.info')->where('id', '[0-9]+');
+
+    Route::get('/create', "ProductController@createProduct")->name('product.create');
+});
 
 Route::prefix('json')->group(function () {
     Route::get('/category/all', "CategoryController@getCategoriesJson")->name('category.all.json');

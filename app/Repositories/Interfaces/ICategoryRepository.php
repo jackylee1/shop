@@ -36,4 +36,10 @@ interface ICategoryRepository
      * @return Collection
      */
     function getWithChildren($id);
+
+    /**
+     * @param $id
+     * @return Collection
+     */
+    function getProducts($id, IProductRepository $productRepository);
 }

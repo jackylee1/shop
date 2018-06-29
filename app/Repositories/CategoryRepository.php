@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Category;
 use App\Repositories\Interfaces\ICategoryRepository;
+use App\Repositories\Interfaces\IProductRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
@@ -37,5 +38,10 @@ class CategoryRepository extends BaseRepository implements ICategoryRepository
     public function getAll()
     {
         return $this->model->with(['children'])->get();
+    }
+
+    public function getProducts($id, IProductRepository $productRepository)
+    {
+        return $this->model->with(['childrenWithProducts', 'products'])->find($id);
     }
 }

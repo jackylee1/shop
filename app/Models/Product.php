@@ -15,5 +15,22 @@ class Product extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
-    //
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'category_id',
+        'name',
+        'url',
+        'image_url',
+        'status',
+        'price',
+        'description',
+    ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

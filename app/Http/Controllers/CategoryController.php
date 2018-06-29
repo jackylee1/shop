@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Repositories\Interfaces\ICategoryRepository;
+use App\Repositories\Interfaces\IProductRepository;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,9 +14,15 @@ class CategoryController extends Controller
      */
     protected $categoryRepository;
 
-    public function __construct(ICategoryRepository $categoryRepository)
+    /**
+     * @var IProductRepository
+     */
+    protected $productRepository;
+
+    public function __construct(ICategoryRepository $categoryRepository, IProductRepository $productRepository)
     {
         $this->categoryRepository = $categoryRepository;
+        $this->productRepository = $productRepository;
     }
 
     public function getCategories()
@@ -37,7 +44,9 @@ class CategoryController extends Controller
 
     public function getCategoryJson($id)
     {
-        return $this->categoryRepository->getWithChildren($id);
+        // TODO: Проверить на существование
+
+        return $this->categoryRepository->getProducts($id, $this->productRepository);
     }
 
     public function createCategory()

@@ -39,6 +39,10 @@ Vue.component('category-info', require('./components/category/InfoComponent.vue'
 
 Vue.component('product-item', require('./components/product/ItemComponent.vue'));
 
+Vue.filter('price', function (value) {
+    return new Intl.NumberFormat().format(value);
+});
+
 const app = new Vue({
     el: '#app'
 });

@@ -4,16 +4,16 @@
             <span class="btn btn-success btn-sm">Акция</span>
         </div>
         <div class="product-img">
-            <img :src="product.image" :alt="product.image">
+            <img :src="product.image_url" :alt="product.image_url">
         </div>
         <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
             <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's content.
+                {{ product.description }}
             </p>
         </div>
         <div class="card-footer">
-            <div class="btn btn-outline-info btn-sm">17 999 грн.</div>
+            <div class="btn btn-outline-info btn-sm">{{ product.price | price }} грн.</div>
             <a href="#" class="btn btn-primary btn-sm pull-right" data-toggle="tooltip" data-placement="top" title="Добавить в корзину">
                 <i class="fa fa-shopping-cart"></i>
             </a>
