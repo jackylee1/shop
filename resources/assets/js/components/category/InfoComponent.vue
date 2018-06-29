@@ -37,6 +37,9 @@
                 this.products = response.data.products;
 
                 for(let i = 0; i < this.children.length; i++) {
+//                    if(this.children[i].children_with_products)
+//                        this.children = this.children.concat(this.children[i].children_with_products);
+
                     this.products = this.products.concat(this.children[i].products);
                 }
             });

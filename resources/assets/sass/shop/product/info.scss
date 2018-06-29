@@ -1,0 +1,33 @@
+.product-info {
+    margin-top: 0px;
+
+    .breadcrumb {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+
+    .left-side {
+        .carousel {
+            max-height: 300px;
+        }
+    }
+
+    .right-side {
+        .price {
+            margin-bottom: 10px;
+
+            span {
+                font-size: 30px;
+                font-weight: bold;
+
+                small {
+                    font-weight: normal;
+                }
+
+                .oldprice {
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+}

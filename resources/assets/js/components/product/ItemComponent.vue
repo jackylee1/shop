@@ -1,5 +1,5 @@
 <template>
-    <div :class="{'card product-item col-md-4 border': true, 'border-danger': inBookmarks}" @click="productClick">
+    <a :href="`/product/` + product.id" :class="{'card product-item col-md-4 border': true, 'border-danger': inBookmarks}" @click="productClick">
         <div class="product-type">
             <span class="btn btn-success btn-sm">Акция</span>
         </div>
@@ -21,7 +21,7 @@
                 <i class="fa fa-heart"></i>
             </div>
         </div>
-    </div>
+    </a>
 </template>
 
 <script>
@@ -37,9 +37,6 @@
                 this.inBookmarks = true;
         },
         methods: {
-            productClick() {
-                alert("Product clicked");
-            },
             toggleBookmark() {
                 this.inBookmarks = !this.inBookmarks;
             }

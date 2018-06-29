@@ -43,4 +43,7 @@ Route::prefix('json')->group(function () {
     Route::get('/category/all', "CategoryController@getCategoriesJson")->name('category.all.json');
     Route::get('/category/{id}', "CategoryController@getCategoryJson")
                         ->name('category.info.json')->where('id', '[0-9]+');
+
+    Route::get('/product/{id}', "ProductController@getProductInfoJson")
+                        ->name('product.info.json')->where('id', '[0-9]+');
 });

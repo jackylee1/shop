@@ -24,6 +24,18 @@ class ProductController extends Controller
         $this->categoryRepository = $categoryRepository;
     }
 
+    public function getProductInfo($id)
+    {
+        return view('product.info', compact('id'));
+    }
+
+    public function getProductInfoJson($id)
+    {
+        $product = $this->productRepository->get($id);
+
+        return $product;
+    }
+
     public function createProduct()
     {
         $this->productRepository->create([

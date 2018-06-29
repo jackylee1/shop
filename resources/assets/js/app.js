@@ -38,6 +38,7 @@ Vue.component('category-all', require('./components/category/AllComponent.vue'))
 Vue.component('category-info', require('./components/category/InfoComponent.vue'));
 
 Vue.component('product-item', require('./components/product/ItemComponent.vue'));
+Vue.component('product-info', require('./components/product/InfoComponent.vue'));
 
 Vue.filter('price', function (value) {
     return new Intl.NumberFormat().format(value);

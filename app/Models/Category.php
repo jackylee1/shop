@@ -28,22 +28,22 @@ class Category extends Model
 
     public function parent()
     {
-        return $this->belongsTo(Category::class, 'parent_id');
+        return $this->belongsTo(Category::class, 'parent_id')->with(['parent']);
     }
 
     public function children()
     {
-        return $this->hasMany(Category::class, 'parent_id');
+        return $this->hasMany(Category::class, 'parent_id')->with(['children']);
     }
 
     public function parentWithProducts()
     {
-        return $this->belongsTo(Category::class, 'parent_id')->with('products');
+        return $this->belongsTo(Category::class, 'parent_id')->with(['products', 'parentWithProducts']);
     }
 
     public function childrenWithProducts()
     {
-        return $this->hasMany(Category::class, 'parent_id')->with('products');
+        return $this->hasMany(Category::class, 'parent_id')->with(['products', 'childrenWithProducts']);
     }
 
     public function products()
