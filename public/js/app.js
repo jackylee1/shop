@@ -50437,16 +50437,77 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             loaded: false,
             product: {},
-            category: []
+            category: [],
+            review: []
         };
     },
 
+    filters: {
+        console: function (_console) {
+            function console(_x) {
+                return _console.apply(this, arguments);
+            }
+
+            console.toString = function () {
+                return _console.toString();
+            };
+
+            return console;
+        }(function (value) {
+            console.log(value);
+        })
+    },
+    computed: {
+        cleanReviews: function cleanReviews() {
+            var _reviews = [];
+
+            for (var i = 0; i < this.review.length; i++) {
+                if (this.review[i].parent_id === null) {
+                    _reviews.push(this.review[i]);
+                }
+            }
+
+            return _reviews;
+        }
+    },
     props: ['productid'],
     mounted: function mounted() {
         var _this = this;
@@ -50466,6 +50527,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
 
             _this.category = _this.category.reverse();
+
+            _this.review = _this.product.reviews;
 
             _this.loaded = true;
         });
@@ -50531,7 +50594,7 @@ var render = function() {
             _c("hr")
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-8 left-side" }, [
+          _c("div", { staticClass: "col-md-8 left-side border-md-right" }, [
             _c(
               "div",
               {
@@ -50563,7 +50626,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-4 border-left right-side" }, [
+          _c("div", { staticClass: "col-md-4 right-side" }, [
             _c("div", { staticClass: "price" }, [
               _c("span", [
                 _vm._v(
@@ -50580,7 +50643,90 @@ var render = function() {
             _vm._m(6),
             _vm._v(" "),
             _vm._m(7)
-          ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-8 border-top pt-2 pb-2 border-right" },
+            [
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.product.description) +
+                  "\n        "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-md-8 border-top pt-4 border-right" },
+            _vm._l(_vm.cleanReviews, function(item, index) {
+              return _c(
+                "div",
+                { key: index, staticClass: "review" },
+                [
+                  _c("div", { staticClass: "card mb-4" }, [
+                    _c("div", { staticClass: "card-header" }, [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(item.user.name) +
+                          " " +
+                          _vm._s(item.user.surname) +
+                          "\n                    "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v(_vm._s(item.content))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-footer text-muted" }, [
+                      _vm._m(8, true),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "card-text float-right" }, [
+                        _vm._v(_vm._s(item.created_at))
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(item.children, function(c_item, c_index) {
+                    return _c(
+                      "div",
+                      { key: c_index, staticClass: "card ml-5 mb-4" },
+                      [
+                        _c("div", { staticClass: "card-header" }, [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(c_item.user.name) +
+                              " " +
+                              _vm._s(c_item.user.surname) +
+                              "\n                    "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-body" }, [
+                          _c("p", { staticClass: "card-text" }, [
+                            _vm._v(_vm._s(c_item.content))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-footer text-muted" }, [
+                          _vm._m(9, true),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "card-text float-right" }, [
+                            _vm._v(_vm._s(c_item.created_at))
+                          ])
+                        ])
+                      ]
+                    )
+                  })
+                ],
+                2
+              )
+            })
+          )
         ])
       : _vm._e()
   ])
@@ -50706,6 +50852,24 @@ var staticRenderFns = [
           _vm._v("Отзывы")
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("i", { staticClass: "fa fa-reply" }),
+      _vm._v(" Ответить")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("i", { staticClass: "fa fa-reply" }),
+      _vm._v(" Ответить")
     ])
   }
 ]

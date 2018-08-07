@@ -20,7 +20,7 @@
                 </div>
                 <hr>
             </div>
-            <div class="col-md-8 left-side">
+            <div class="col-md-8 left-side border-md-right">
                 <div id="productcarousel" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#productcarousel" data-slide-to="0" class="active"></li>
@@ -40,7 +40,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-4 border-left right-side">
+            <div class="col-md-4 right-side">
                 <div class="price">
                     <span>
                         {{ product.price | price }}
@@ -65,6 +65,38 @@
                     </li>
                 </ul>
             </div>
+            <div class="col-md-8 border-top pt-2 pb-2 border-right">
+                {{ product.description }}
+            </div>
+            <div class="col-md-8 border-top pt-4 border-right">
+                <div class="review" v-for="(item, index) in cleanReviews" :key="index">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            {{ item.user.name }} {{ item.user.surname }}
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ item.content }}</p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a href="#"><i class="fa fa-reply"></i> Ответить</a>
+                            <p class="card-text float-right">{{ item.created_at }}</p>
+                        </div>
+                    </div>
+
+                    <div class="card ml-5 mb-4" v-for="(c_item, c_index) in item.children" :key="c_index">
+                        <div class="card-header">
+                            {{ c_item.user.name }} {{ c_item.user.surname }}
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ c_item.content }}</p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a href="#"><i class="fa fa-reply"></i> Ответить</a>
+                            <p class="card-text float-right">{{ c_item.created_at }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -76,6 +108,26 @@
                 loaded: false,
                 product: {},
                 category: [],
+                review: [],
+            }
+        },
+        filters: {
+            console: function (value) {
+                console.log(value);
+            }
+        },
+        computed: {
+            cleanReviews: function () {
+                let _reviews = [];
+
+                for(let i = 0; i < this.review.length; i++)
+                {
+                    if(this.review[i].parent_id === null) {
+                        _reviews.push(this.review[i]);
+                    }
+                }
+
+                return _reviews;
             }
         },
         props: ['productid'],
@@ -95,6 +147,8 @@
                 }
 
                 this.category = this.category.reverse();
+
+                this.review = this.product.reviews;
 
                 this.loaded = true;
             });

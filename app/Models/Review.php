@@ -28,7 +28,6 @@ class Review extends Model
      * @var array
      */
     protected $hidden = [
-        "created_at",
         "deleted_at",
     ];
 
@@ -39,7 +38,7 @@ class Review extends Model
 
     public function children()
     {
-        return $this->hasMany(Review::class, 'parent_id');
+        return $this->hasMany(Review::class, 'parent_id')->with(['user']);
     }
 
     public function product()
