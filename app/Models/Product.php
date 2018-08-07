@@ -33,4 +33,14 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class)->with(['parent']);
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class)->with(['children']);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
 }

@@ -51,6 +51,9 @@ class CategoryController extends Controller
 
     public function createCategory()
     {
-
+        return $this->categoryRepository->create([
+            "name"  =>  "Телефоны",
+            "url"   =>  "phones",
+        ]);
     }
 }

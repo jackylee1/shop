@@ -38,8 +38,8 @@ class ProductController extends Controller
 
     public function createProduct()
     {
-        $this->productRepository->create([
-            'category_id' => 6,
+        return $this->productRepository->create([
+            'category_id' => 1,
             'name' => "Samsung Galaxy S9",
             'url' => "galaxys9samsung",
             'image_url' => "https://cdn.27.ua/190/f0/e7/585959_6.jpeg",

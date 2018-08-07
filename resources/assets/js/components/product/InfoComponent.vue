@@ -52,6 +52,18 @@
                     </span>
                 </div>
                 <a href="#" class="btn btn-success btn-lg btn-block"><i class="fa fa-shopping-cart"></i> Купить</a>
+
+                <ul class="nav flex-column mt-4 nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Все о товаре</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Описание</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Отзывы</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -69,6 +81,8 @@
         props: ['productid'],
         mounted() {
             axios.get(`/json/product/${this.productid}`).then((response) => {
+                console.log(response.data);
+
                 this.product = response.data;
 
                 this.category.push(this.product.category);

@@ -10,7 +10,6 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-window.VueRouteLaravel = require('vue-route-laravel');
 window.queryString = require('query-string');
 
 var config = {
@@ -19,8 +18,6 @@ var config = {
     queryString: queryString,
     csrf_token: document.head.querySelector("[name=csrf-token]").content
 };
-
-Vue.use(VueRouteLaravel, config);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

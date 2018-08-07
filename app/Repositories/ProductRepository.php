@@ -24,6 +24,6 @@ class ProductRepository extends BaseRepository implements IProductRepository
 
     public function get($id)
     {
-        return $this->model->with(['category'])->find($id);
+        return $this->model->with(['category', 'reviews'])->find($id);
     }
 }
