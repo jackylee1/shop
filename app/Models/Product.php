@@ -29,6 +29,16 @@ class Product extends Model
         'description',
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        "created_at",
+        "deleted_at",
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class)->with(['parent']);
@@ -36,7 +46,7 @@ class Product extends Model
 
     public function reviews()
     {
-        return $this->hasMany(Review::class)->with(['children']);
+        return $this->hasMany(Review::class)->with(['children', 'user']);
     }
 
     public function images()

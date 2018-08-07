@@ -8,7 +8,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Каталог</a></li>
-                        <li class="breadcrumb-item" v-for="(item, index) in category.reverse()" :key="index"><a :href="`/category/` + item.id">{{ item.name }}</a></li>
+                        <li class="breadcrumb-item" v-for="(item, index) in category" :key="index"><a :href="`/category/` + item.id">{{ item.name }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
                     </ol>
                 </nav>
@@ -88,12 +88,13 @@
                 this.category.push(this.product.category);
 
                 let _parent = this.product.category.parent;
-                while(_parent) {
-                    console.log(_parent);
+                while (_parent) {
                     this.category.push(_parent);
 
                     _parent = _parent.parent;
                 }
+
+                this.category = this.category.reverse();
 
                 this.loaded = true;
             });

@@ -22,6 +22,6 @@
   "dependencies": {
     "bootstrap": "^4.1.3",
     "bootstrap-vue": "^2.0.0-rc.11",
-    "vue-product-zoomer": "^2.0.10"
+    "vue-route-laravel": "^1.0.4"
   }
 }

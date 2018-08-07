@@ -26,6 +26,16 @@ class Category extends Model
         'status',
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        "created_at",
+        "deleted_at",
+    ];
+
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id')->with(['parent']);
