@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::any('/user/logout', "UserController@logout");
+
 Route::redirect('/home', '/');
 
 Route::group(['middleware' => ['guest']], function () {

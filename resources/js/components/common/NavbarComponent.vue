@@ -80,7 +80,7 @@
                             </a>
                             <div class="dropdown-menu user-menu" aria-labelledby="user-dropdown">
                                 <a class="dropdown-item" href="#">Профиль</a>
-                                <a class="dropdown-item" href="#">Выход</a>
+                                <a class="dropdown-item" href="/user/logout">Выход</a>
                             </div>
                         </li>
                     </ul>

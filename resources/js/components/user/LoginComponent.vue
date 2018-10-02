@@ -60,7 +60,7 @@
         methods: {
             login() {
                 axios.post('/login', this.userdata).then((response) => {
-                    console.log(response);
+                    location.href = "/";
                 }).catch((error) => {
                     var errors = error.response;
                     console.log(errors);
