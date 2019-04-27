@@ -9,55 +9,108 @@ class Category extends Model
 {
     use SoftDeletes;
 
-    /**
-     * The attributes that should be mutated to dates.
+    /** The attributes that are mass assignable.
      *
-     * @var array
-     */
-    protected $dates = ['deleted_at'];
-
-    /**
      * @var array
      */
     protected $fillable = [
-        'parent_id',
-        'name',
-        'url',
-        'status',
+        //
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * Guarded attributes.
      *
      * @var array
      */
-    protected $hidden = [
-        "created_at",
-        "deleted_at",
+    protected $guarded = [
+        'id',
+        'created_at',
     ];
 
+    /**
+     * Date casts.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'updated_at',
+        'created_at',
+    ];
+
+    /**
+     * Appends to JSON.
+     *
+     * @var array
+     */
+    protected $appends = [
+        //
+    ];
+
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+        'parent',
+    ];
+
+    /**
+     * The relationship counts that should be eager loaded on every query.
+     *
+     * @var array
+     */
+    protected $withCount = [
+        //
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        //
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function parent()
     {
-        return $this->belongsTo(Category::class, 'parent_id')->with(['parent']);
+        return $this->belongsTo(Category::class, 'parent_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function children()
     {
-        return $this->hasMany(Category::class, 'parent_id')->with(['children']);
+        return $this->hasMany(Category::class, 'parent_id');
     }
 
-    public function parentWithProducts()
+    /**
+     * @return bool
+     */
+    public function isParent()
     {
-        return $this->belongsTo(Category::class, 'parent_id')->with(['products', 'parentWithProducts']);
+        return is_null($this->parent_id);
     }
 
-    public function childrenWithProducts()
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeNotChild($query)
     {
-        return $this->hasMany(Category::class, 'parent_id')->with(['products', 'childrenWithProducts']);
+        return $query->whereNull('parent_id');
     }
-
-    public function products()
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeIsChildren($query)
     {
-        return $this->hasMany(Product::class);
+        return $query->whereNotNull('parent_id');
     }
 }

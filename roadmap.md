@@ -4,6 +4,7 @@ Before the first version, all stable versions will have 0 branch. After the rele
 
 - Products (with full Product info)
 - Product`s reviews
+- Properties
 - Categories  with child categories (2 lvl depth)
 - User profile (with products, reviews)
 - Bookmarks

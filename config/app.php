@@ -181,11 +181,6 @@ return [
          * Laravel Debug Bar
          */
         Barryvdh\Debugbar\ServiceProvider::class,
-
-        /*
-         * Repositories
-         */
-        App\Repositories\RepositoryServiceProvider::class,
     ],
 
     /*

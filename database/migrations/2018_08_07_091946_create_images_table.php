@@ -14,13 +14,19 @@ class CreateImagesTable extends Migration
     public function up()
     {
         Schema::create('images', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->string('url');
-            $table->text('description');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('product_id');
+            $table->string('path');
+            $table->string('description');
             $table->softDeletes();
             $table->timestamps();
+
+            /*
+             * Foreign keys
+             */
+            $table->foreign('product_id')
+                ->references('id')->on('products')
+                ->onDelete('cascade');
         });
     }
 

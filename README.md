@@ -6,7 +6,8 @@ Is an online store management system. It is Laravel-based, using a MySQL databas
 
 ## What is it? What better?
 
-Nothing better yet, but I'm looking for the best. Its my first "big" project on Laravel and first usage Vue.js. I'm studying these two frameworks for new experiences.
+Nothing better yet, but I'm looking for the best. 
+To find the goals and what has already been achieved, you can see the [roadmap](roadmap.md).
 
 ## Get started
 
@@ -15,6 +16,8 @@ The installation is the same as Laravel, but for now you need to download the re
 `composer update`
 
 And then `npm install`, and you can use this project.
+
+> After the first stable version, the composer will be used.
 
 Will be supplemented...
 
