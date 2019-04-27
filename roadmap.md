@@ -11,11 +11,14 @@ Before the first version, all stable versions will have 0 branch. After the rele
 - Cart
 - Basic order
 - Basic admin
+- Notifications
 
 ##Future:
 - Admin with roles (and dynamic permissions)
 - Categories (more lvl depth)
 - Support some delivery services (using api)
 - Charts
+- Realtime notifications
+- Api for other apps
 
 The list is supplemented...

@@ -29,7 +29,7 @@
 
 <script>
     export default {
-        data() {
+        data: function () {
             return {
                 status: false,
                 userdata: {
@@ -49,32 +49,24 @@
                 }
             }
         },
+
         watch: {
-            'userdata.email'(newVal, oldVal) {
+            "userdata.email": function(newVal, oldVal) {
                 this.errors.email.status = false;
             },
-            'userdata.password'(newVal, oldVal) {
+            "userdata.password": function(newVal, oldVal) {
                 this.errors.password.status = false;
             }
         },
+
         methods: {
             login() {
-                axios.post('/login', this.userdata).then((response) => {
+                axios.post(location.pathname, this.userdata).then((response) => {
                     location.href = "/";
-                }).catch((error) => {
-                    var errors = error.response;
-                    console.log(errors);
-                    if(errors.statusText == "Unprocessable Entity" || errors.status == 422) {
-                        console.log(errors.status);
-                        if(errors.data.errors) {
-                            if(errors.data.errors.email) {
-                                this.errors.email.status = true;
-                                this.errors.email.message = _.isArray(errors.data.errors.email) ? errors.data.errors.email[0] : errors.data.errors.email;
-                            }
-                            if(errors.data.errors.password) {
-                                this.errors.password.status = true;
-                                this.errors.password.message = _.isArray(errors.data.errors.password) ? errors.data.errors.password[0] : errors.data.errors.password;
-                            }
+                }).catch(({response}) => {
+                    if(response.statusText == "Unprocessable Entity" || response.status == 422) {
+                        if(response.data.errors) {
+                            this.errors = response.data.errors;
                         }
                     }
                 });
