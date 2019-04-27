@@ -12,6 +12,7 @@ Before the first version, all stable versions will have 0 branch. After the rele
 - Basic order
 - Basic admin
 - Notifications
+- Localization
 
 ##Future:
 - Admin with roles (and dynamic permissions)
