@@ -13,4 +13,7 @@
 
 Auth::routes(['verify' => true]);
 
-Route::view('/', 'home')->name('home');
+Route::any('/', 'ProductsController@index')->name('home');
+
+Route::resource('products', 'ProductsController');
+Route::resource('categories', 'CategoriesController');

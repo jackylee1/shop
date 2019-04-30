@@ -11,7 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->createDefaultUser();
+        $this->createDefaultUser()
+            ->call(SampleDataSeeder::class);
     }
 
     /**
