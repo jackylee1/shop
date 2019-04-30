@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "eventionsoftware/shop",
+    "description": "Evention Shop CMS.",
+    "keywords": ["ecommerce", "laravel", "shop", "cms"],
     "license": "MIT",
     "type": "project",
     "require": {
