@@ -1,5 +1,9 @@
 # Evention Shop
 
+<p align="center">
+<a href="https://www.codefactor.io/repository/github/eventionsoftware/shop"><img src="https://www.codefactor.io/repository/github/eventionsoftware/shop/badge" alt="CodeFactor"></a>
+</p>
+
 ## About
 
 Is an online store management system. It is Laravel-based, using a MySQL database and Vue.js. Support is provided for different languages and currencies.
