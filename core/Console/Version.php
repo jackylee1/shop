@@ -1,13 +1,12 @@
 <?php
 
-namespace Evention\Console\Commands;
+namespace Evention\Console;
 
+use Evention\Facades\Evention;
 use Illuminate\Console\Command;
 
 class Version extends Command
 {
-    const VERSION = 0.1;
-
     /**
      * The name and signature of the console command.
      *
@@ -39,6 +38,8 @@ class Version extends Command
      */
     public function handle()
     {
-        $this->line('Evention Shop CMS <info>'. self::VERSION .'</info>');
+        $message = "Evention Shop CMS <info>" . Evention::version() . "</info>";
+
+        $this->line($message);
     }
 }
