@@ -27,7 +27,7 @@
             "database/factories"
         ],
         "psr-4": {
-            "Evention\\": "app/"
+            "App\\": "app/"
         },
         "files": [
             "app/helpers.php"
