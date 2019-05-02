@@ -9,28 +9,73 @@ class Image extends Model
 {
     use SoftDeletes;
 
-    /**
-     * The attributes that should be mutated to dates.
+    /** The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $dates = ['deleted_at'];
-
-    /**
-     * @var array
-     */
-    protected $fillable = [];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        "created_at",
-        "deleted_at",
+    protected $fillable = [
+        //
     ];
 
+    /**
+     * Guarded attributes.
+     *
+     * @var array
+     */
+    protected $guarded = [
+        'id',
+        'created_at',
+    ];
+
+    /**
+     * Date casts.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'updated_at',
+        'created_at',
+    ];
+
+    /**
+     * Appends to JSON.
+     *
+     * @var array
+     */
+    protected $appends = [
+        //
+    ];
+
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+        //
+    ];
+
+    /**
+     * The relationship counts that should be eager loaded on every query.
+     *
+     * @var array
+     */
+    protected $withCount = [
+        //
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        //
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function product()
     {
         return $this->belongsTo(Product::class);

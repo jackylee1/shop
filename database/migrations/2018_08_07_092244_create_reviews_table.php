@@ -14,16 +14,28 @@ class CreateReviewsTable extends Migration
     public function up()
     {
         Schema::create('reviews', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('reviews');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->text('content');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('product_id');
+            $table->integer('status')->default(1);
+            $table->text('text');
             $table->softDeletes();
             $table->timestamps();
+
+            /*
+             * Foreign keys
+             */
+            $table->foreign('parent_id')
+                ->references('id')->on('reviews')
+                ->onDelete('cascade');
+
+            $table->foreign('product_id')
+                ->references('id')->on('products')
+                ->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 

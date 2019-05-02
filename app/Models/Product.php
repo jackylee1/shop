@@ -9,46 +9,92 @@ class Product extends Model
 {
     use SoftDeletes;
 
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    protected $dates = ['deleted_at'];
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
 
-    /**
+    /** The attributes that are mass assignable.
+     *
      * @var array
      */
     protected $fillable = [
-        'category_id',
-        'name',
-        'url',
-        'image_url',
-        'status',
-        'price',
-        'description',
+        //
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * Guarded attributes.
      *
      * @var array
      */
-    protected $hidden = [
-        "created_at",
-        "deleted_at",
+    protected $guarded = [
+        'id',
+        'created_at',
     ];
 
+    /**
+     * Date casts.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'updated_at',
+        'created_at',
+    ];
+
+    /**
+     * Appends to JSON.
+     *
+     * @var array
+     */
+    protected $appends = [
+        //
+    ];
+
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+        //
+    ];
+
+    /**
+     * The relationship counts that should be eager loaded on every query.
+     *
+     * @var array
+     */
+    protected $withCount = [
+        //
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        //
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function category()
     {
-        return $this->belongsTo(Category::class)->with(['parent']);
+        return $this->belongsTo(Category::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function reviews()
     {
-        return $this->hasMany(Review::class)->with(['children', 'user']);
+        return $this->hasMany(Review::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function images()
     {
         return $this->hasMany(Image::class);

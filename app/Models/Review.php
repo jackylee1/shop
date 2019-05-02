@@ -4,49 +4,101 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use PhpParser\Builder;
 
 class Review extends Model
 {
     use SoftDeletes;
 
-    /**
-     * The attributes that should be mutated to dates.
+    const STATUS_NOT_PUBLISHED = 0;
+    const STATUS_PUBLISHED = 1;
+
+    /** The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $dates = ['deleted_at'];
-
-    /**
-     * @var array
-     */
-    protected $fillable = [];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        "deleted_at",
+    protected $fillable = [
+        //
     ];
 
-    public function parent()
-    {
-        return $this->belongsTo(Review::class, 'parent_id');
-    }
+    /**
+     * Guarded attributes.
+     *
+     * @var array
+     */
+    protected $guarded = [
+        'id',
+        'created_at',
+    ];
 
-    public function children()
-    {
-        return $this->hasMany(Review::class, 'parent_id')->with(['user']);
-    }
+    /**
+     * Date casts.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'updated_at',
+        'created_at',
+    ];
 
+    /**
+     * Appends to JSON.
+     *
+     * @var array
+     */
+    protected $appends = [
+        //
+    ];
+
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+        //
+    ];
+
+    /**
+     * The relationship counts that should be eager loaded on every query.
+     *
+     * @var array
+     */
+    protected $withCount = [
+        //
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        //
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function product()
     {
         return $this->belongsTo(Product::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopePublished(Builder $query)
+    {
+        return $query->where('status', self::STATUS_PUBLISHED);
     }
 }

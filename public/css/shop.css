@@ -10,8 +10,7 @@
 
 .site-header a {
   color: rgba(255, 255, 255, 0.7);
-  -webkit-transition: ease-in-out color .15s;
-  transition: ease-in-out color .15s;
+  transition: ease-in-out color 0.15s;
 }
 
 .site-header a:hover {
@@ -87,28 +86,25 @@
   top: 0px;
   font-size: 12px;
   display: none;
-  -webkit-transition: 0.7s;
   transition: 0.7s;
   z-index: 1;
 }
 
 .site-header .dropdown-menu.cart-menu .cart-items .cart-item .item-info a:before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   left: 0;
   right: 0;
   top: 50px;
   height: 12px;
-  background: -webkit-gradient(linear, , from(rgba(255, 255, 255, 0)), color-stop(100%, #fff), color-stop(10%, #fff), to(#fff));
   background: linear-gradient("to bottom", rgba(255, 255, 255, 0), #fff 100%, #fff 10%, #fff);
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+99&0+0,1+49 */
   /* FF3.6-15 */
   /* Chrome10-25,Safari5.1-6 */
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(49%, white), color-stop(99%, white));
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 49%, white 99%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#00ffffff", endColorstr="#ffffff",GradientType=0 );
   /* IE6-9 */
 }
 
@@ -177,8 +173,7 @@
 
 .form-signin .form-control {
   position: relative;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   height: auto;
   padding: 10px;
   font-size: 16px;
@@ -188,13 +183,13 @@
   z-index: 2;
 }
 
-.form-signin input[type="email"] {
+.form-signin input[type=email] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] {
+.form-signin input[type=password] {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -214,8 +209,7 @@
 
 .form-signup .form-control {
   position: relative;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   height: auto;
   padding: 10px;
   font-size: 16px;
@@ -236,7 +230,6 @@
 .product-item {
   padding: 0;
   margin: 0 10px;
-  -webkit-transition: 0.7s;
   transition: 0.7s;
   cursor: pointer;
   position: relative;
@@ -273,7 +266,6 @@
 }
 
 .product-item:hover {
-  -webkit-box-shadow: 0px 0px 26px -4px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 26px -4px rgba(0, 0, 0, 0.5);
   text-decoration: none;
   color: #000;

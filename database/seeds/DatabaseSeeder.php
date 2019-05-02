@@ -11,6 +11,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->createDefaultUser()
+            ->call(SampleDataSeeder::class);
+    }
+
+    /**
+     * @return $this
+     */
+    protected function createDefaultUser()
+    {
+        factory(\App\Models\User::class)->create();
+
+        return $this;
     }
 }
