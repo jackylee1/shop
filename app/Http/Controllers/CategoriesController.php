@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Evention\Http\Controllers;
 
-use App\Models\Category;
+use Evention\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -41,7 +41,7 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \Evention\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function show(Category $category)
@@ -52,7 +52,7 @@ class CategoriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \Evention\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function edit(Category $category)
@@ -64,7 +64,7 @@ class CategoriesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \Evention\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Category $category)
@@ -75,7 +75,7 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \Evention\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function destroy(Category $category)
