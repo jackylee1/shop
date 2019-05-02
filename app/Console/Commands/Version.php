@@ -1,0 +1,44 @@
+<?php
+
+namespace Evention\Console\Commands;
+
+use Illuminate\Console\Command;
+
+class Version extends Command
+{
+    const VERSION = 0.1;
+
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'evention:version';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Evention Shop CMS version';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+        $this->line('Evention Shop CMS <info>'. self::VERSION .'</info>');
+    }
+}
