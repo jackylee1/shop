@@ -77,6 +77,14 @@ class Product extends Model
     ];
 
     /**
+     * @return mixed|string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()

@@ -15,5 +15,7 @@ Auth::routes(['verify' => true]);
 
 Route::any('/', 'ProductsController@index')->name('home');
 
-Route::resource('products', 'ProductsController');
+Route::get('product/{product}', 'ProductsController@show')->name('products.show');
+
+//Route::resource('products', 'ProductsController');
 Route::resource('categories', 'CategoriesController');

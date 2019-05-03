@@ -24,6 +24,7 @@
     "vue-template-compiler": "^2.6.7"
   },
   "dependencies": {
+    "jquery-zoom": "^1.7.21",
     "laravel-echo": "^1.5.3",
     "socket.io-client": "^2.2.0",
     "vue-multiselect": "^2.1.3",
