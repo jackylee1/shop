@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h1>{{ $product->name }}</h1>
+                    <h1>{{ $product->title }}</h1>
                     <div class="text-right">
                         <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-share"></i></a>
                     </div>
@@ -16,7 +16,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item text-center active">
                             <div class="zoom">
-                                <img class="img-fluid" src="{{ asset('images/product_example.jpg') }}" alt="{{ $product->name }}">
+                                <img class="img-fluid" src="{{ asset('images/product_example.jpg') }}" alt="{{ $product->title }}">
                             </div>
                         </div>
                     </div>
@@ -39,11 +39,13 @@
                 <div class="price">
                     <span>
                         {{ price($product->price) }}
-                        <small class="currency">грн.</small>
+                        <small class="currency">$</small>
+                        @if($product->old_price)
                         <s class="oldprice badge badge-danger">
-                            20 999
-                            <small class="currency">грн.</small>
+                            {{ price($product->old_price) }}
+                            <small class="currency">$</small>
                         </s>
+                        @endif
                     </span>
                 </div>
 
@@ -74,16 +76,17 @@
             </div>
 
             <div class="col-md-8 border-top pt-4 border-right reviews">
+                @foreach($product->reviews as $review)
                 <div class="review">
                     <div class="card mb-4">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <div>
-                                Maxim Rebitskiy
+                                {{ $review->user->full_name }}
                             </div>
-                            <p class="card-text">3 minutes ago</p>
+                            <p class="card-text">{{ $review->created_at->diffForHumans() }}</p>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">Good Product!</p>
+                            <p class="card-text">{{ $review->text }}</p>
                         </div>
                         <div class="card-footer text-muted d-flex justify-content-between align-items-center">
                             <div class="review-controls">
@@ -96,13 +99,17 @@
                         </div>
                     </div>
 
+                    @foreach($review->children as $child)
                     <div class="review-reply">
                         <div class="card ml-5 mb-4">
-                            <div class="card-header">
-                                Moderator
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <div>
+                                    {{ $child->user->full_name }}
+                                </div>
+                                <p class="card-text">{{ $child->created_at->diffForHumans() }}</p>
                             </div>
                             <div class="card-body">
-                                <p class="card-text">Good comment</p>
+                                <p class="card-text">{{ $child->text }}</p>
                             </div>
                             <div class="card-footer text-muted d-flex justify-content-between align-items-center">
                                 <div class="review-controls">
@@ -115,7 +122,9 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
+                @endforeach
             </div>
         </div>
     </div>

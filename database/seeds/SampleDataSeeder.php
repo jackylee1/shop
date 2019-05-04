@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Database\Seeder;
 
 class SampleDataSeeder extends Seeder
@@ -9,7 +10,7 @@ class SampleDataSeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
 
-        $this->products();
+        $this->reviews();
 
         Schema::enableForeignKeyConstraints();
     }
@@ -22,6 +23,18 @@ class SampleDataSeeder extends Seeder
         Product::truncate();
 
         factory(Product::class, 10)->create();
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    protected function reviews()
+    {
+        Review::truncate();
+
+        factory(Review::class, 10)->create();
 
         return $this;
     }

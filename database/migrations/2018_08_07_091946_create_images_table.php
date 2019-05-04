@@ -18,6 +18,7 @@ class CreateImagesTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->string('path');
             $table->string('description');
+            $table->boolean('is_cover')->default(false);
             $table->softDeletes();
             $table->timestamps();
 

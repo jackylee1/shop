@@ -21,10 +21,10 @@
                             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
                             <div class="card-body">
                                 <a href="{{ route('products.show', $product) }}" class="card-link">
-                                    {{ $product->name }}
+                                    {{ $product->title }}
                                 </a>
                                 <small class="text-muted">
-                                    {{ $product->category->name }}
+                                    {{ $product->category->title }}
                                 </small>
                             </div>
                             <div class="card-footer">
@@ -50,7 +50,7 @@
                     <div class="card-body">
                         <div class="list-group list-group-flush">
                             @foreach($categories as $category)
-                            <a href="{{ route('categories.show', $category) }}" class="list-group-item">{{ $category->name }}</a>
+                            <a href="{{ route('categories.show', $category) }}" class="list-group-item">{{ $category->title }}</a>
                             @endforeach
                         </div>
                     </div>
