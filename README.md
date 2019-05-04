@@ -2,7 +2,7 @@
 
 <p align="center">
 <a href="https://travis-ci.org/eVentionSoftware/shop"><img src="https://api.travis-ci.org/eVentionSoftware/shop.svg?branch=master" alt="Build Status"></a>
-<a href="https://github.styleci.io/repos/137532862"><img src="https://github.styleci.io/repos/165751650/shield?branch=master" alt="StyleCI"></a>
+<a href="https://github.styleci.io/repos/137532862"><img src="https://github.styleci.io/repos/137532862/shield?branch=master" alt="StyleCI"></a>
 <a href="https://packagist.org/packages/eventionsoftware/shop"><img src="https://poser.pugx.org/eventionsoftware/shop/d/total.svg" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/eventionsoftware/shop"><img src="https://poser.pugx.org/eventionsoftware/shop/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://www.codefactor.io/repository/github/eventionsoftware/shop"><img src="https://www.codefactor.io/repository/github/eventionsoftware/shop/badge" alt="CodeFactor"></a>
