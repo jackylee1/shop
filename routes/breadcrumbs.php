@@ -7,7 +7,8 @@ Breadcrumbs::for('home', function ($trail) {
 });
 
 Breadcrumbs::for('products.show', function ($trail, \App\Models\Product $product) {
-    $trail->parent('categories.show', $product->category);
+    $trail->parent('home');
+    $trail->push($product->category->title, route('categories.show', $product->category));
     $trail->push($product->title, route('products.show', $product));
 });
 
