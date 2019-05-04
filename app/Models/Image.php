@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Evention\Elequent\Traits\Relations\HasProduct;
 
 class Image extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasProduct;
 
     /** The attributes that are mass assignable.
      *
@@ -70,14 +72,16 @@ class Image extends Model
      * @var array
      */
     protected $casts = [
-        //
+        'is_cover' => 'boolean'
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @param Builder $query
+     *
+     * @return Builder
      */
-    public function product()
+    public function scopeIsCover(Builder $query)
     {
-        return $this->belongsTo(Product::class);
+        return $query->where('is_cover', true);
     }
 }

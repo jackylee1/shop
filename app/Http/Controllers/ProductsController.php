@@ -52,7 +52,9 @@ class ProductsController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $product->load(['reviews', 'images', 'properties']);
+
+        return view('products.show', compact('product'));
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
+use Evention\Database\Seeds\Seeder;
+use Evention\Database\Seeds\SampleDataSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,15 +14,5 @@ class DatabaseSeeder extends Seeder
     {
         $this->createDefaultUser()
             ->call(SampleDataSeeder::class);
-    }
-
-    /**
-     * @return $this
-     */
-    protected function createDefaultUser()
-    {
-        factory(\App\Models\User::class)->create();
-
-        return $this;
     }
 }

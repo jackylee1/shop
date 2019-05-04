@@ -3,12 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Evention\Elequent\Traits\HasChildren;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use PhpParser\Builder;
+use Evention\Elequent\Traits\Relations\HasUser;
+use Evention\Elequent\Traits\Relations\HasProduct;
 
 class Review extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasChildren, HasUser, HasProduct;
 
     const STATUS_NOT_PUBLISHED = 0;
     const STATUS_PUBLISHED = 1;
@@ -56,7 +59,7 @@ class Review extends Model
      * @var array
      */
     protected $with = [
-        //
+        'children'
     ];
 
     /**
@@ -76,22 +79,6 @@ class Review extends Model
     protected $casts = [
         //
     ];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function product()
-    {
-        return $this->belongsTo(Product::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     /**
      * @param Builder $query

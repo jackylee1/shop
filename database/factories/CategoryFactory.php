@@ -15,10 +15,7 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(App\Models\Category::class, function (Faker $faker) {
-    $name = $faker->name;
-
     return [
-        'name' => $name,
-        'slug' => Str::slug($name),
+        'title' => $faker->sentence,
     ];
 });
