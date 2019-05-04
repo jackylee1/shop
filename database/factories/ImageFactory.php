@@ -14,11 +14,11 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(App\Models\Review::class, function (Faker $faker, $arguments = []) {
+$factory->define(App\Models\Image::class, function (Faker $faker, $arguments = []) {
     return [
         'product_id' => $arguments['product_id'] ?? factory(\App\Models\Product::class)->create()->id,
-        'status' => \App\Models\Review::STATUS_PUBLISHED,
-        'user_id' => factory(\App\Models\User::class)->create()->id,
-        'text' => $faker->text,
+        'path' => 'images/product_example.jpg',
+        'description' => $faker->sentence,
+        'is_cover' => true,
     ];
 });
