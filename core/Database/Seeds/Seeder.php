@@ -35,7 +35,7 @@ class Seeder extends BaseSeeder
      */
     protected function createDefaultUser()
     {
-        $this->callFactory(\App\Models\User::class, [
+        $this->callFactory(\App\Models\User\User::class, [
             'email' => 'admin@evention.com',
         ], 1, false);
 

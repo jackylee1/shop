@@ -21,3 +21,4 @@ Route::get('category/{category}', 'CategoriesController@show')->name('categories
 
 //Route::resource('products', 'ProductsController');
 //Route::resource('categories', 'CategoriesController');
+Route::resource('bookmarks', 'BookmarksController');

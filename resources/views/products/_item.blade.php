@@ -2,7 +2,7 @@
     <div class="card mb-4 shadow-sm product-item">
         <div class="product-controls">
             <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-danger"><i class="fas fa-heart"></i></button>
+                <bookmark-button product-id="{{ $product->id }}"></bookmark-button>
                 <button type="button" class="btn btn-sm btn-light"><i class="fas fa-balance-scale"></i></button>
             </div>
         </div>

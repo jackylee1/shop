@@ -1,15 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\User;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable implements MustVerifyEmail
+class TemporaryUser extends Model
 {
-    use Notifiable;
-
     /** The attributes that are mass assignable.
      *
      * @var array
@@ -73,23 +69,4 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         //
     ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    /**
-     * full_name attribute
-     *
-     * @return string
-     */
-    public function getFullNameAttribute()
-    {
-        return $this->name . ' ' . $this->surname;
-    }
 }
