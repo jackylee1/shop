@@ -29,6 +29,14 @@ trait HasChildren
     }
 
     /**
+     * @return bool
+     */
+    public function isChild()
+    {
+        return ! is_null($this->parent_id);
+    }
+
+    /**
      * @param $query
      * @return mixed
      */

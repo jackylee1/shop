@@ -4,6 +4,9 @@
     <div class="container product-info">
         <div class="row">
             <div class="col-12">
+                @include('components._breadcrumb', ['data' => $product])
+            </div>
+            <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center">
                     <h1>{{ $product->title }}</h1>
                     <div class="text-right">
@@ -66,7 +69,7 @@
 
                 <ul class="nav flex-column mt-4 nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Information</a>
+                        <a class="nav-link" href="#">Information</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Properties</a>

@@ -42,11 +42,14 @@ class CategoriesController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Category  $category
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Category $category)
     {
-        //
+        $category->load(['children', 'products']);
+
+        return view('categories.show', compact('category'));
     }
 
     /**
