@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
      */
     protected function createDefaultUser()
     {
-        factory(\App\Models\User::class)->create();
+        factory(\App\Models\User::class)->create([
+            'email' => 'admin@evention.com',
+        ]);
 
         return $this;
     }

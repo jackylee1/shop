@@ -74,4 +74,12 @@ class Category extends Model
     protected $casts = [
         //
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function properties()
+    {
+        return $this->belongsToMany(Property::class);
+    }
 }

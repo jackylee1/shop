@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Pivots\ProductProperty;
 use Evention\Elequent\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -102,6 +103,16 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany(Image::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function properties()
+    {
+        return $this->belongsToMany(Property::class)
+            ->using(ProductProperty::class)
+            ->withPivot('value');
     }
 
     /**

@@ -10,7 +10,6 @@
                         <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-share"></i></a>
                     </div>
                 </div>
-                <hr class="mb-0">
             </div>
             <div class="col-md-8 left-side border-right py-3">
                 <div id="productCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-toggle="tooltip" title="Click to zoom image">
@@ -70,6 +69,9 @@
                         <a class="nav-link active" href="#">Information</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#">Properties</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Description</a>
                     </li>
                     <li class="nav-item">
@@ -79,7 +81,26 @@
             </div>
 
             <div class="col-md-8 border-top pt-2 pb-2 border-right">
-                {{ $product->description }}
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Description <small class="text-muted">{{ $product->title }}</small></h4>
+                        <p>{{ $product->description }}</p>
+                    </div>
+                    <div class="col-12 border-bottom mb-3"></div>
+                    <div class="col-12">
+                        <h4>Properties:</h4>
+                        <table class="table table-borderless">
+                            <tbody>
+                            @foreach($product->properties as $property)
+                                <tr>
+                                    <td>{{ $property->name }}</td>
+                                    <td>{{ $property->pivot->value }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-8 border-top pt-4 border-right reviews">
