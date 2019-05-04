@@ -1,17 +1,17 @@
-<div class="review-reply">
-    <div class="card ml-5 mb-4">
+<div class="@if($review->parent_id) review-reply @else review @endif">
+    <div class="card mb-4 @if($review->parent_id) ml-5 @endif">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div>
-                {{ $child->user->full_name }}
+                {{ $review->user->full_name }}
             </div>
-            <p class="card-text">{{ $child->created_at->diffForHumans() }}</p>
+            <p class="card-text">{{ $review->created_at->diffForHumans() }}</p>
         </div>
         <div class="card-body">
-            <p class="card-text">{{ $child->text }}</p>
+            <p class="card-text">{{ $review->text }}</p>
         </div>
         <div class="card-footer text-muted d-flex justify-content-between align-items-center">
             <div class="review-controls">
-                <a href="#" class="btn btn-sm btn-link" data-parent-id="{{ $parent->id }}">
+                <a href="#" class="btn btn-sm btn-link" data-parent-id="{{ $review->parent_id }}">
                     <i class="fas fa-reply"></i> Reply
                 </a>
             </div>
@@ -23,6 +23,6 @@
     </div>
 </div>
 
-@foreach($child->children as $item)
-    @include('reivews.child_review', ['parent' => $child, 'child' => $item])
+@foreach($review->children as $child)
+    @include('reivews._review', ['review' => $child])
 @endforeach

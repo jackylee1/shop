@@ -77,32 +77,7 @@
 
             <div class="col-md-8 border-top pt-4 border-right reviews">
                 @foreach($product->reviews as $review)
-                <div class="review">
-                    <div class="card mb-4">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <div>
-                                {{ $review->user->full_name }}
-                            </div>
-                            <p class="card-text">{{ $review->created_at->diffForHumans() }}</p>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">{{ $review->text }}</p>
-                        </div>
-                        <div class="card-footer text-muted d-flex justify-content-between align-items-center">
-                            <div class="review-controls">
-                                <a href="#" class="btn btn-sm btn-link"><i class="fas fa-reply"></i> Reply</a>
-                            </div>
-                            <div class="review-rating">
-                                <a href="#" class="btn btn-sm btn-outline-danger"><i class="fas fa-thumbs-up"></i></a>
-                                <a href="#" class="btn btn-sm btn-outline-secondary"><i class="fas fa-thumbs-down"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    @foreach($review->children as $child)
-                    @include('reivews.child_review', ['parent' => $review])
-                    @endforeach
-                </div>
+                    @include('reivews._review')
                 @endforeach
             </div>
         </div>
