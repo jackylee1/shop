@@ -74,6 +74,18 @@ class Category extends Model
     ];
 
     /**
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($product) {
+            $product->update(['slug' => $product->title]);
+        });
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function parent()
@@ -112,5 +124,17 @@ class Category extends Model
     public function scopeIsChildren($query)
     {
         return $query->whereNotNull('parent_id');
+    }
+
+    /**
+     * @param $value
+     */
+    public function setSlugAttribute($value)
+    {
+        if (static::whereSlug($slug = Str::slug($value))->exists()) {
+            $slug = "{$slug}-{$this->id}";
+        }
+
+        $this->attributes['slug'] = $slug;
     }
 }

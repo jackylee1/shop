@@ -110,6 +110,31 @@ class Review extends Model
     }
 
     /**
+     * @return bool
+     */
+    public function isParent()
+    {
+        return is_null($this->parent_id);
+    }
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeNotChild($query)
+    {
+        return $query->whereNull('parent_id');
+    }
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeIsChildren($query)
+    {
+        return $query->whereNotNull('parent_id');
+    }
+
+    /**
      * @param Builder $query
      * @return Builder
      */
