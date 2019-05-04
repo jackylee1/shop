@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -70,7 +71,7 @@ class Image extends Model
      * @var array
      */
     protected $casts = [
-        //
+        'is_cover' => 'boolean'
     ];
 
     /**
@@ -79,5 +80,15 @@ class Image extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    /**
+     * @param Builder $query
+     *
+     * @return Builder
+     */
+    public function scopeIsCover(Builder $query)
+    {
+        return $query->where('is_cover', true);
     }
 }

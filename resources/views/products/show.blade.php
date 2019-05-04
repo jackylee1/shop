@@ -10,16 +10,20 @@
                         <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-share"></i></a>
                     </div>
                 </div>
+                <hr class="mb-0">
             </div>
-            <div class="col-md-8 left-side border-right pb-3">
-                <div id="productCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="col-md-8 left-side border-right py-3">
+                <div id="productCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-toggle="tooltip" title="Click to zoom image">
                     <div class="carousel-inner">
-                        <div class="carousel-item text-center active">
+                        @foreach($product->images as $image)
+                        <div class="carousel-item text-center @if($loop->first) active @endif">
                             <div class="zoom">
-                                <img class="img-fluid" src="{{ asset('images/product_example.jpg') }}" alt="{{ $product->title }}">
+                                <img class="img-fluid" src="{{ asset($image->path) }}" alt="{{ $image->description }}">
                             </div>
                         </div>
+                        @endforeach
                     </div>
+                    @if($product->images->count() > 1)
                     <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
@@ -29,14 +33,17 @@
                         <span class="sr-only">Next</span>
                     </a>
                     <ol class="carousel-indicators">
-                        <li data-target="#productCarousel" data-slide-to="0" class="active">
-                            <img src="{{  asset('images/product_example.jpg') }}" alt="" class="carousel-preview">
+                    @foreach($product->images as $image)
+                        <li data-target="#productCarousel" data-slide-to="{{ $loop->index }}" class="@if($loop->first) active @endif">
+                            <img src="{{ asset($image->path) }}" alt="{{ $image->description }}" class="carousel-preview">
                         </li>
+                    @endforeach
                     </ol>
+                    @endif
                 </div>
             </div>
-            <div class="col-md-4 right-side">
-                <div class="price">
+            <div class="col-md-4 right-side sticky-top">
+                <div class="price mt-3">
                     <span>
                         {{ price($product->price) }}
                         <small class="currency">$</small>
@@ -60,7 +67,7 @@
 
                 <ul class="nav flex-column mt-4 nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Informationе</a>
+                        <a class="nav-link active" href="#">Information</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Description</a>

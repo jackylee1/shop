@@ -18,7 +18,9 @@
                                     <button type="button" class="btn btn-sm btn-light"><i class="fas fa-balance-scale"></i></button>
                                 </div>
                             </div>
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                            @if($product->cover)
+                            <img src="{{ asset($product->cover) }}" alt="{{ $product->title }}" class="bg-placeholder-img card-img-top">
+                            @endif
                             <div class="card-body">
                                 <a href="{{ route('products.show', $product) }}" class="card-link">
                                     {{ $product->title }}

@@ -5,6 +5,7 @@ namespace App\Models;
 use Evention\Elequent\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Cache;
 
 class Product extends Model
 {
@@ -56,7 +57,7 @@ class Product extends Model
      * @var array
      */
     protected $with = [
-        //
+        'category'
     ];
 
     /**
@@ -101,5 +102,31 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany(Image::class);
+    }
+
+    /**
+     * @return Image
+     *
+     * @throws \Psr\SimpleCache\InvalidArgumentException
+     */
+    public function getCoverAttribute()
+    {
+        if(Cache::has($this->getCoverCacheKey())) {
+            return Cache::get($this->getCoverCacheKey());
+        }
+
+        $cover = $this->images()->getQuery()->isCover()->value('path');
+
+        Cache::set($this->getCoverCacheKey(), $cover, now()->addHour());
+
+        return $cover;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCoverCacheKey()
+    {
+        return 'product-cover-' . $this->id;
     }
 }
