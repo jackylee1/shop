@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Evention\Elequent\Traits\HasChildren;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Review extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasChildren;
 
     const STATUS_NOT_PUBLISHED = 0;
     const STATUS_PUBLISHED = 1;
@@ -80,22 +81,6 @@ class Review extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function parent()
-    {
-        return $this->belongsTo(Review::class, 'parent_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function children()
-    {
-        return $this->hasMany(Review::class, 'parent_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function product()
     {
         return $this->belongsTo(Product::class);
@@ -107,31 +92,6 @@ class Review extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    /**
-     * @return bool
-     */
-    public function isParent()
-    {
-        return is_null($this->parent_id);
-    }
-
-    /**
-     * @param $query
-     * @return mixed
-     */
-    public function scopeNotChild($query)
-    {
-        return $query->whereNull('parent_id');
-    }
-    /**
-     * @param $query
-     * @return mixed
-     */
-    public function scopeIsChildren($query)
-    {
-        return $query->whereNotNull('parent_id');
     }
 
     /**

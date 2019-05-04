@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Evention\Elequent\Traits\HasChildren;
+use Evention\Elequent\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Sluggable, HasChildren;
 
     /** The attributes that are mass assignable.
      *
@@ -72,69 +74,4 @@ class Category extends Model
     protected $casts = [
         //
     ];
-
-    /**
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::created(function ($product) {
-            $product->update(['slug' => $product->title]);
-        });
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function parent()
-    {
-        return $this->belongsTo(Category::class, 'parent_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function children()
-    {
-        return $this->hasMany(Category::class, 'parent_id');
-    }
-
-    /**
-     * @return bool
-     */
-    public function isParent()
-    {
-        return is_null($this->parent_id);
-    }
-
-    /**
-     * @param $query
-     * @return mixed
-     */
-    public function scopeNotChild($query)
-    {
-        return $query->whereNull('parent_id');
-    }
-    /**
-     * @param $query
-     * @return mixed
-     */
-    public function scopeIsChildren($query)
-    {
-        return $query->whereNotNull('parent_id');
-    }
-
-    /**
-     * @param $value
-     */
-    public function setSlugAttribute($value)
-    {
-        if (static::whereSlug($slug = Str::slug($value))->exists()) {
-            $slug = "{$slug}-{$this->id}";
-        }
-
-        $this->attributes['slug'] = $slug;
-    }
 }

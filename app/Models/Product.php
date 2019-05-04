@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
+use Evention\Elequent\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
 
 class Product extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Sluggable;
 
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 1;
@@ -78,26 +78,6 @@ class Product extends Model
     ];
 
     /**
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::created(function ($product) {
-            $product->update(['slug' => $product->title]);
-        });
-    }
-
-    /**
-     * @return mixed|string
-     */
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()
@@ -121,17 +101,5 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany(Image::class);
-    }
-
-    /**
-     * @param $value
-     */
-    public function setSlugAttribute($value)
-    {
-        if (static::whereSlug($slug = Str::slug($value))->exists()) {
-            $slug = "{$slug}-{$this->id}";
-        }
-
-        $this->attributes['slug'] = $slug;
     }
 }

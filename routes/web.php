@@ -17,5 +17,7 @@ Route::any('/', 'ProductsController@index')->name('home');
 
 Route::get('product/{product}', 'ProductsController@show')->name('products.show');
 
+Route::get('category/{product}', 'CategoriesController@show')->name('categories.show');
+
 //Route::resource('products', 'ProductsController');
-Route::resource('categories', 'CategoriesController');
+//Route::resource('categories', 'CategoriesController');
