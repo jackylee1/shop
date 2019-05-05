@@ -7,11 +7,41 @@ use Illuminate\Support\Str;
 trait Sluggable
 {
     /**
+     * Slug field
+     *
+     * @var string
+     */
+    protected $slugField = 'slug';
+
+    /**
+     * Model title field
+     *
+     * @var string
+     */
+    protected $titleField = 'title';
+
+    /**
      * @return mixed|string
      */
     public function getRouteKeyName()
     {
-        return 'slug';
+        return $this->slugField;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitleFieldName()
+    {
+        return $this->titleField;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitleField()
+    {
+        return $this->getAttribute($this->titleField);
     }
 
     /**
@@ -22,7 +52,7 @@ trait Sluggable
     public static function bootSluggable()
     {
         static::created(function ($model) {
-            $model->update(['slug' => $model->title]);
+            $model->update([$model->getRouteKeyName() => $model->getTitleField()]);
         });
     }
 
@@ -31,10 +61,10 @@ trait Sluggable
      */
     public function setSlugAttribute($value)
     {
-        if (static::whereSlug($slug = Str::slug($value))->exists()) {
+        if($this->where($this->slugField, ($slug = Str::slug($value)))->exists()) {
             $slug = "{$slug}-{$this->id}";
         }
 
-        $this->attributes['slug'] = $slug;
+        $this->attributes[$this->slugField] = $slug;
     }
 }
