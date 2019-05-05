@@ -27,7 +27,7 @@ class ProductTest extends TestCase
     {
         parent::setUp();
 
-        $this->product = $thread = create(Product::class);
+        $this->product = create(Product::class);
     }
 
     /** @test */
