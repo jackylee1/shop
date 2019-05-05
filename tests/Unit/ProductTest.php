@@ -5,7 +5,6 @@ namespace Tests\Unit;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Product;
-use App\Models\Property;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Str;
