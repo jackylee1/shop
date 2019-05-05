@@ -6,6 +6,7 @@ use Evention\Elequent\Model;
 use Evention\Elequent\Traits\Relations\HasProduct;
 use Evention\Elequent\Traits\Relations\HasTemporaryUser;
 use Evention\Elequent\Traits\Relations\HasUser;
+use Illuminate\Database\Eloquent\Builder;
 
 class Bookmark extends Model
 {
@@ -72,7 +73,7 @@ class Bookmark extends Model
      * @var array
      */
     protected $casts = [
-        //
+        'status' => 'boolean',
     ];
 
     /**
@@ -85,5 +86,15 @@ class Bookmark extends Model
         }
 
         return $this->user();
+    }
+
+    /**
+     * @param Builder $query
+     *
+     * @return Builder
+     */
+    public function scopeIsActive(Builder $query)
+    {
+        return $query->where('status', true);
     }
 }

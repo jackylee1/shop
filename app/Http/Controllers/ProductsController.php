@@ -17,7 +17,7 @@ class ProductsController extends Controller
      */
     public function index(Product $product, Category $category)
     {
-        $products = $product->all();
+        $products = $product->paginate(setting('paginate_count', 20));
         $categories = $category->all();
 
         return view('products.index', compact('products', 'categories'));

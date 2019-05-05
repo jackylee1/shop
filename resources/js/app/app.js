@@ -33,5 +33,12 @@ Vue.component('bookmark-button', require('./components/BookmarkButtonComponent.v
 //
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+
+    data: function () {
+        return {
+            user: window.App.user,
+            bookmarks: window.App.bookmarks,
+        };
+    }
 });

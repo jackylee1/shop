@@ -18,6 +18,7 @@ class CreateBookmarksTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('temporary_user_id')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
 
             /*

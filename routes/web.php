@@ -19,6 +19,9 @@ Route::get('product/{product}', 'ProductsController@show')->name('products.show'
 
 Route::get('category/{category}', 'CategoriesController@show')->name('categories.show');
 
+Route::get('bookmarks', 'BookmarksController@index')->name('bookmarks.index');
+Route::post('bookmarks', 'BookmarksController@store')->name('categories.store');
+
 //Route::resource('products', 'ProductsController');
 //Route::resource('categories', 'CategoriesController');
-Route::resource('bookmarks', 'BookmarksController');
+//Route::resource('bookmarks', 'BookmarksController');

@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Models\Pivots\ProductProperty;
+use App\Models\User\User;
 use Evention\Elequent\Traits\Sluggable;
+use Evention\Services\BookmarkService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
@@ -106,6 +108,14 @@ class Product extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function properties()
@@ -139,5 +149,18 @@ class Product extends Model
     public function getCoverCacheKey()
     {
         return 'product-cover-' . $this->id;
+    }
+
+    /**
+     * @param User|null|bool $user
+     * @param bool $force
+     *
+     * @return bool
+     *
+     * @throws \Psr\SimpleCache\InvalidArgumentException
+     */
+    public function hasBookmark($user = null, $force = false)
+    {
+        return BookmarkService::hasBookmark($this, $user, $force);
     }
 }

@@ -8,9 +8,13 @@
             </div>
             <div class="col-md-8 col-md-offset-2">
                 <div class="row">
-                    @foreach($category->products as $product)
+                    @foreach($products as $product)
                         @include('products._item')
                     @endforeach
+
+                    <div class="col-12 d-flex justify-content-center">
+                        {{ $products->render() }}
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">

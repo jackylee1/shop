@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ setting('sitename', 'Evention') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -23,7 +23,7 @@
         <nav class="navbar navbar-expand-md navbar-light main-navbar">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ setting('sitename', 'Evention') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
 
                     </ul>
 
-                    <form class="form-inline my-2 my-md-0 d-inline w-100 navbar-search-form px-5">
+                    <form class="form-inline my-2 my-md-0 d-inline w-75 navbar-search-form px-5">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-search"></i></span>
@@ -46,10 +46,16 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="{{ route('bookmarks.index') }}" class="nav-link">
+                                <i class="fas fa-heart"></i>
+                                <span class="badge badge-secondary" v-text="bookmarks"></span>
+                            </a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="cart-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-shopping-bag"></i>
-                                <span class="badge badge-light">0</span>
+                                <span class="badge badge-secondary">0</span>
                             </a>
                             <div class="dropdown-menu cart-menu" aria-labelledby="cart-dropdown">
                                 <h1>
@@ -159,10 +165,11 @@
 <!-- Scripts -->
 <script>
     window.App = {!! json_encode([
-    'csrfToken' => csrf_token(),
-    'user' => Auth::user(),
-    'signedIn' => Auth::check()
-]) !!};
+        'csrfToken' => csrf_token(),
+        'user' => Auth::user(),
+        'bookmarks' => bookmarks_count(),
+        'signedIn' => Auth::check()
+    ]) !!};
 </script>
 
 <script src="{{ asset('js/app.js') }}" defer></script>

@@ -8,12 +8,16 @@
             </div>
             <div class="col-md-8 col-md-offset-2">
                 <div class="row">
-                    @foreach($products as $product)
-                        @include('products._item')
-                    @endforeach
+                    @forelse($bookmarks as $bookmark)
+                        @include('products._item', ['product' => $bookmark->product])
+                    @empty
+                        <div class="col-12 text-center">
+                            <div class="alert alert-info">You bookmarks list is empty</div>
+                        </div>
+                    @endforelse
 
                     <div class="col-12 d-flex justify-content-center">
-                        {{ $products->render() }}
+                        {{ $bookmarks->render() }}
                     </div>
                 </div>
             </div>

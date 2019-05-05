@@ -21,3 +21,8 @@ Breadcrumbs::for('categories.show', function ($trail, \App\Models\Category $cate
 
     $trail->push($category->title, route('categories.show', $category));
 });
+
+Breadcrumbs::for('bookmarks.index', function ($trail) {
+    $trail->parent('home');
+    $trail->push('My bookmarks', route('bookmarks.index'));
+});

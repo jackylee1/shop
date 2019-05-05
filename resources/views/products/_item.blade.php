@@ -1,9 +1,10 @@
-<div class="col-md-4">
+<div class="col-md-4" data-product-item-id="{{ $product->id }}">
     <div class="card mb-4 shadow-sm product-item">
         <div class="product-controls">
-            <div class="btn-group">
-                <bookmark-button product-id="{{ $product->id }}"></bookmark-button>
-                <button type="button" class="btn btn-sm btn-light"><i class="fas fa-balance-scale"></i></button>
+            <div class="btn-group bg-light rounded">
+                <bookmark-button product-id="{{ $product->id }}"
+                                 :status="@bool($product->hasBookmark())"
+                                 :remove="@bool(isset($bookmark))"></bookmark-button>
             </div>
         </div>
         @if($product->cover)
@@ -24,7 +25,7 @@
                 </span>
 
                 <button type="button" class="btn btn-sm btn-success">
-                    <i class="fas fa-shopping-cart"></i> <span class="buy-text">Купить</span>
+                    <i class="fas fa-shopping-cart"></i> <span class="buy-text">Buy</span>
                 </button>
             </div>
         </div>

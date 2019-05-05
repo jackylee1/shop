@@ -13,6 +13,8 @@ class EventionServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        parent::boot();
+
         //
     }
 
@@ -23,6 +25,8 @@ class EventionServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        parent::register();
+
         //
     }
 }

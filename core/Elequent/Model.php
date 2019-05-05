@@ -24,4 +24,32 @@ class Model extends BaseModel
             $instance->save();
         });
     }
+
+    /**
+     * Toggle fields of the first record matching the attributes or create it
+     *
+     * @param array $attributes
+     * @param array $values
+     * @param array|string $fields
+     *
+     * @return mixed
+     */
+    public function toggleOrCreate(array $attributes, $values = [], $fields = ['status'])
+    {
+        $fields = is_array($fields) ? $fields : [$fields];
+
+        if (! is_null($instance = $this->where($attributes)->first())) {
+            $values = [];
+
+            foreach ($fields as $field) {
+                $values[$field] = ! ((boolean) $instance->$field);
+            }
+
+            return $instance->fill($values)->save();
+        }
+
+        return tap($this->newModelInstance($attributes + $values), function ($instance) {
+            $instance->save();
+        });
+    }
 }

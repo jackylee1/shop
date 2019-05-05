@@ -47,9 +47,11 @@ class CategoriesController extends Controller
      */
     public function show(Category $category)
     {
-        $category->load(['children', 'products']);
+        $category->load(['children']);
 
-        return view('categories.show', compact('category'));
+        $products = $category->products()->paginate(setting('paginate_count', 20));
+
+        return view('categories.show', compact('category', 'products'));
     }
 
     /**
