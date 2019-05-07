@@ -4,7 +4,7 @@ namespace Evention;
 
 use Evention\Contracts\CoreContract;
 use Evention\Providers\CommandsServiceProvider;
-use Evention\Providers\EventionServiceProvider;
+use Evention\Providers\ServicesServiceProvider;
 use Illuminate\Contracts\Foundation\Application;
 
 class Core
@@ -69,6 +69,7 @@ class Core
      */
     protected function registerBaseServiceProviders()
     {
+        $this->app->register(new ServicesServiceProvider($this->app));
         $this->app->register(new CommandsServiceProvider($this->app));
     }
 

@@ -73,3 +73,33 @@ if(! function_exists('bookmarks_count')) {
         return \Evention\Services\BookmarkService::getCountBookmarks($force);
     }
 }
+
+if(! function_exists('user')) {
+
+    /**
+     * Get current user
+     *
+     * @return \App\Models\User\User|\App\Models\User\TemporaryUser
+     */
+    function user()
+    {
+        if(auth()->guest()) {
+            return \Evention\Services\Facades\TemporaryUser::user();
+        }
+
+        return auth()->user();
+    }
+}
+
+if(! function_exists('user_type')) {
+    
+    /**
+     * Return the current user type
+     *
+     * @return string
+     */
+    function user_type()
+    {
+        return auth()->guest() ? 'temporary_user' : 'user';
+    }
+}

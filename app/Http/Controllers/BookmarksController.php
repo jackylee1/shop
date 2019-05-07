@@ -18,7 +18,7 @@ class BookmarksController extends Controller
      */
     public function index(Bookmark $bookmark, Category $category)
     {
-        $bookmarks = $bookmark->where('user_id', auth()->id())
+        $bookmarks = $bookmark->byCurrentUser()
             ->isActive()
             ->with('product')
             ->paginate(setting('paginate_count', 20));
@@ -47,7 +47,7 @@ class BookmarksController extends Controller
 
         $bookmark->toggleOrCreate([
             'product_id' => $data['product_id'],
-            'user_id' => auth()->id(),
+            user_type() .'_id' => user()->id,
         ]);
 
         BookmarkService::hasBookmark($data['product_id'], true);

@@ -38,8 +38,6 @@
                 axios.post('bookmarks', {
                     'product_id': this.productId,
                 }).then(({data}) => {
-                    console.log(this.$root);
-
                     this.$root.bookmarks = data.bookmarks;
 
                     this.bookmark_status = ! this.bookmark_status;

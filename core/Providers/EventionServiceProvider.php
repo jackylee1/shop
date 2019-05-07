@@ -12,13 +12,9 @@ class EventionServiceProvider extends ServiceProvider
      * Create a new service provider instance.
      *
      * @param \Illuminate\Contracts\Foundation\Application $app
-     *
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function __construct(Application $app)
     {
-        //$app->make(CoreContract::class);
-
         parent::__construct($app);
     }
 
@@ -29,9 +25,7 @@ class EventionServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        \Blade::directive('bool', function ($expresion) {
-            return "<?php echo bool_string({$expresion}) ?>";
-        });
+        $this->loadBladeDirectives();
     }
 
     /**
@@ -46,5 +40,17 @@ class EventionServiceProvider extends ServiceProvider
         $this->app->make(CoreContract::class);
 
         //
+    }
+
+    /**
+     * Load Blade Directives
+     *
+     * @return void
+     */
+    protected function loadBladeDirectives()
+    {
+        \Blade::directive('bool', function ($expresion) {
+            return "<?php echo bool_string({$expresion}) ?>";
+        });
     }
 }

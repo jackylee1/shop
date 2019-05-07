@@ -4,13 +4,14 @@ namespace Evention\Services;
 
 use App\Models\Bookmark;
 use App\Models\Product;
+use App\Models\User\TemporaryUser;
 use App\Models\User\User;
 
 class BookmarkService extends Service
 {
     /**
      * @param Product|int $product
-     * @param User|bool|null $user
+     * @param User|TemporaryUser|bool|null $user
      * @param bool $force
      *
      * @return bool
@@ -19,11 +20,6 @@ class BookmarkService extends Service
      */
     public static function hasBookmark($product, $user = null, $force = false)
     {
-        // TODO
-        if(auth()->guest()) {
-            return false;
-        }
-
         [$user, $force] = self::getUser($user, $force);
 
         $product = self::getProduct($product);
@@ -48,18 +44,13 @@ class BookmarkService extends Service
      */
     public static function getCountBookmarks($force = false)
     {
-        // TODO
-        if(auth()->guest()) {
-            return 0;
-        }
-
-        $user = auth()->user();
+        $user = user();
 
         if(\Cache::has(self::getCacheCountBookmarksKey($user->id)) && ! $force) {
             return \Cache::get(self::getCacheCountBookmarksKey($user->id));
         }
 
-        $count = Bookmark::where('user_id', $user->id)
+        $count = Bookmark::byCurrentUser()
             ->isActive()
             ->count();
 
@@ -75,11 +66,11 @@ class BookmarkService extends Service
      */
     protected static function getCacheCountBookmarksKey($user_id)
     {
-        return 'bookmarks-user-count-' . $user_id;
+        return 'bookmarks-user-count-'. user_type() .'-'. $user_id;
     }
 
     /**
-     * @param User|bool $user
+     * @param User|TemporaryUser|bool $user
      * @param $force
      *
      * @return array
@@ -89,9 +80,9 @@ class BookmarkService extends Service
         if(is_bool($user)) {
             $force = $user;
 
-            $user = auth()->user();
+            $user = user();
         } else {
-            $user = $user ?? auth()->user();
+            $user = $user ?? user();
         }
 
         return [$user, $force];
@@ -111,23 +102,23 @@ class BookmarkService extends Service
 
     /**
      * @param Product $product
-     * @param User $user
+     * @param User|TemporaryUser $user
      *
      * @return string
      */
-    protected static function getCacheHasBookmarkKey(Product $product, User $user)
+    protected static function getCacheHasBookmarkKey(Product $product, $user)
     {
-        return 'hasBookmark-user-product-'. $user->id . '-' . $product->id;
+        return 'hasBookmark-user-product-'. user_type() .'-'. $user->id . '-' . $product->id;
     }
 
     /**
      * @param Product $product
-     * @param User $user
+     * @param User|TemporaryUser $user
      * @param $status
      * @return bool
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
-    protected static function setCacheHasBookmarkStatus(Product $product, User $user, $status): bool
+    protected static function setCacheHasBookmarkStatus(Product $product, $user, $status): bool
     {
         return \Cache::set(
             self::getCacheHasBookmarkKey($product, $user),
@@ -137,13 +128,13 @@ class BookmarkService extends Service
 
     /**
      * @param Product $product
-     * @param User $user
+     * @param User|TemporaryUser $user
      * @return mixed
      */
-    public static function getBookmarkStatus(Product $product, User $user)
+    public static function getBookmarkStatus(Product $product, $user)
     {
         $status = $product->bookmarks()
-            ->where('user_id', $user->id)
+            ->byCurrentUser()
             ->isActive()
             ->exists();
         return $status;
@@ -151,11 +142,11 @@ class BookmarkService extends Service
 
     /**
      * @param Product $product
-     * @param User $user
+     * @param User|TemporaryUser $user
      *
      * @return bool
      */
-    protected static function getCachedBookmarkStatus(Product $product, User $user): bool
+    protected static function getCachedBookmarkStatus(Product $product, $user): bool
     {
         return (bool)\Cache::get(self::getCacheHasBookmarkKey($product, $user));
     }
