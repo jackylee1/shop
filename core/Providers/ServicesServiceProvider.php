@@ -3,9 +3,9 @@
 namespace Evention\Providers;
 
 use Evention\Services\BookmarkService;
-use Evention\Services\GlobalUserService;
 use Evention\Services\SettingsService;
 use Evention\Services\TemporaryUserService;
+use Evention\Services\UserService;
 use Illuminate\Support\ServiceProvider;
 
 class ServicesServiceProvider extends ServiceProvider
@@ -18,7 +18,7 @@ class ServicesServiceProvider extends ServiceProvider
     protected $services = [
         SettingsService::class,
         TemporaryUserService::class,
-        GlobalUserService::class,
+        UserService::class,
         BookmarkService::class,
     ];
 
@@ -28,7 +28,7 @@ class ServicesServiceProvider extends ServiceProvider
      * @var array
      */
     protected $alias = [
-        GlobalUserService::class => 'user',
+        UserService::class => 'user',
         SettingsService::class => 'setting',
         BookmarkService::class => 'bookmark',
         TemporaryUserService::class => 'temporary_user',

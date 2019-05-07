@@ -1,15 +1,13 @@
 <?php
 
-namespace Evention\Services\Facades;
+namespace Evention\Services;
 
-use Evention\Services\GlobalUserService;
 use Illuminate\Support\Facades\Facade;
 
 /**
- *
- * @see GlobalUserService
+ * @see UserService
  */
-class GlobalUser extends Facade
+class UserService extends Facade
 {
     /**
      * Get the registered name of the component.

@@ -56,6 +56,8 @@ class ProductTest extends TestCase
     /** @test */
     public function a_product_has_a_bookmark_status()
     {
+        $this->signIn();
+
         $this->assertIsBool($this->product->hasBookmark());
     }
 

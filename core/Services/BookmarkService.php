@@ -6,6 +6,7 @@ use App\Models\Bookmark;
 use App\Models\Product;
 use App\Models\User\TemporaryUser;
 use App\Models\User\User;
+use \Evention\Services\Facades\TemporaryUser as TemporaryUserService;
 
 class BookmarkService extends Service
 {
@@ -50,13 +51,44 @@ class BookmarkService extends Service
             return \Cache::get(self::getCacheCountBookmarksKey($user->id));
         }
 
-        $count = Bookmark::byCurrentUser()
+        $count = Bookmark::byCurrentUser($user->id)
             ->isActive()
             ->count();
 
         \Cache::set(self::getCacheCountBookmarksKey($user->id), $count, now()->addHour());
 
         return $count;
+    }
+
+    /**
+     * @param Product $product
+     * @param User|TemporaryUser $user
+     * @return mixed
+     */
+    public static function getBookmarkStatus(Product $product, $user)
+    {
+        $status = $product->bookmarks()
+            ->byCurrentUser($user->id)
+            ->isActive()
+            ->exists();
+
+        return $status;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return bool
+     */
+    public static function changeTemporaryUser(User $user)
+    {
+        $temporary = TemporaryUserService::id();
+
+        return Bookmark::where('temporary_user_id', $temporary)
+            ->update([
+                'user_id' => $user->id,
+                'temporary_user_id' => null,
+            ]);
     }
 
     /**
@@ -124,20 +156,6 @@ class BookmarkService extends Service
             self::getCacheHasBookmarkKey($product, $user),
             $status,
             now()->addHour());
-    }
-
-    /**
-     * @param Product $product
-     * @param User|TemporaryUser $user
-     * @return mixed
-     */
-    public static function getBookmarkStatus(Product $product, $user)
-    {
-        $status = $product->bookmarks()
-            ->byCurrentUser()
-            ->isActive()
-            ->exists();
-        return $status;
     }
 
     /**

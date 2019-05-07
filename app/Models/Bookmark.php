@@ -90,12 +90,15 @@ class Bookmark extends Model
 
     /**
      * @param Builder $builder
+     * @param null $user_id
      *
      * @return Builder
      */
-    public function scopeByCurrentUser(Builder $builder)
+    public function scopeByCurrentUser(Builder $builder, $user_id = null)
     {
-        return $builder->where(user_type() . "_id", user()->id);
+        $user_id = $user_id ?? user()->id;
+
+        return $builder->where(user_type() . "_id", $user_id);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Pivots\ProductProperty;
+use App\Models\User\TemporaryUser;
 use App\Models\User\User;
 use Evention\Elequent\Traits\Sluggable;
 use Evention\Services\BookmarkService;
@@ -152,7 +153,7 @@ class Product extends Model
     }
 
     /**
-     * @param User|null|bool $user
+     * @param User|TemporaryUser|null|bool $user
      * @param bool $force
      *
      * @return bool
