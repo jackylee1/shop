@@ -35,6 +35,10 @@ class CreateBookmarksTable extends Migration
             $table->foreign('temporary_user_id')
                 ->references('id')->on('temporary_users')
                 ->onDelete('cascade');
+
+            //
+            $table->unique(['product_id', 'user_id']);
+            $table->unique(['product_id', 'temporary_user_id']);
         });
     }
 

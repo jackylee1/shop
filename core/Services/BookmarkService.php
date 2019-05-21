@@ -47,15 +47,15 @@ class BookmarkService extends Service
     {
         $user = user();
 
-        if(\Cache::has(self::getCacheCountBookmarksKey($user->id)) && ! $force) {
-            return \Cache::get(self::getCacheCountBookmarksKey($user->id));
+        if(\Cache::has(self::getCacheCountBookmarksKey($user)) && ! $force) {
+            return \Cache::get(self::getCacheCountBookmarksKey($user));
         }
 
         $count = Bookmark::byCurrentUser($user->id)
             ->isActive()
             ->count();
 
-        \Cache::set(self::getCacheCountBookmarksKey($user->id), $count, now()->addHour());
+        \Cache::set(self::getCacheCountBookmarksKey($user), $count, now()->addHour());
 
         return $count;
     }
@@ -84,6 +84,18 @@ class BookmarkService extends Service
     {
         $temporary = TemporaryUserService::id();
 
+        foreach(Bookmark::where('temporary_user_id', $temporary)->get() as $bookmark) {
+            if(Bookmark::where('user_id', $user->id)->where('product_id', $bookmark->product->id)->exists()) {
+                Bookmark::where('user_id', $user->id)
+                    ->where('product_id', $bookmark->product->id)
+                    ->update([
+                        'status' => $bookmark->status,
+                    ]);
+
+                $bookmark->delete();
+            }
+        }
+
         return Bookmark::where('temporary_user_id', $temporary)
             ->update([
                 'user_id' => $user->id,
@@ -92,13 +104,27 @@ class BookmarkService extends Service
     }
 
     /**
-     * @param $user_id
+     * @param User|TemporaryUser|null $user
+     */
+    public static function clearCache($user = null)
+    {
+        $user = $user ?? user();
+
+        \Cache::forget(self::getCacheCountBookmarksKey($user));
+
+        foreach(Bookmark::byCurrentUser()->get() as $bookmark) {
+            \Cache::forget(self::getCacheHasBookmarkKey($bookmark->product, $user));
+        }
+    }
+
+    /**
+     * @param User|TemporaryUser $user
      *
      * @return string
      */
-    protected static function getCacheCountBookmarksKey($user_id)
+    protected static function getCacheCountBookmarksKey($user)
     {
-        return 'bookmarks-user-count-'. user_type() .'-'. $user_id;
+        return 'bookmarks-user-count-'. user_type($user) .'-'. $user->id;
     }
 
     /**
@@ -140,7 +166,7 @@ class BookmarkService extends Service
      */
     protected static function getCacheHasBookmarkKey(Product $product, $user)
     {
-        return 'hasBookmark-user-product-'. user_type() .'-'. $user->id . '-' . $product->id;
+        return 'hasBookmark-user-product-'. user_type($user) .'-'. $user->id . '-' . $product->id;
     }
 
     /**

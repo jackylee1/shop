@@ -3,11 +3,11 @@
 namespace App\Listeners;
 
 use Evention\Services\BookmarkService;
-use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Events\Logout;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ChangeTemporaryUser
+class ClearCacheUser
 {
     /**
      * Create the event listener.
@@ -22,12 +22,15 @@ class ChangeTemporaryUser
     /**
      * Handle the event.
      *
-     * @param object $event
-     *
+     * @param  object  $event
      * @return void
      */
     public function handle($event)
     {
-        BookmarkService::changeTemporaryUser($event->user);
+        if($event instanceof Logout) {
+            BookmarkService::clearCache(temp_user());
+        }
+
+        BookmarkService::clearCache(user());
     }
 }

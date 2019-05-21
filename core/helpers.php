@@ -91,15 +91,34 @@ if(! function_exists('user')) {
     }
 }
 
+if(! function_exists('temp_user')) {
+
+    /**
+     * @return \App\Models\User\TemporaryUser
+     */
+    function temp_user()
+    {
+        return \Evention\Services\Facades\TemporaryUser::user();
+    }
+}
+
 if(! function_exists('user_type')) {
     
     /**
-     * Return the current user type
+     * Return the current or giver user type
+     *
+     * @param \App\Models\User\User|\App\Models\User\TemporaryUser
      *
      * @return string
      */
-    function user_type()
+    function user_type($user = null)
     {
+        if(! is_null($user)) {
+            return $user instanceof \App\Models\User\TemporaryUser
+                ? ' temporary_user'
+                : 'user';
+        }
+
         return auth()->guest() ? 'temporary_user' : 'user';
     }
 }
