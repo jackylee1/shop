@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Models;
+namespace Evention\Models;
 
+use App\Models\User\User;
 use Evention\Elequent\Model;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Evention\Elequent\Traits\Relations\HasProduct;
+use Evention\Elequent\Traits\Relations\HasUser;
+use Illuminate\Database\Eloquent\Builder;
 
-class Image extends Model
+class CartItem extends Model
 {
-    use SoftDeletes, HasProduct;
+    use HasProduct,
+        HasUser;
 
     /** The attributes that are mass assignable.
      *
@@ -72,16 +74,19 @@ class Image extends Model
      * @var array
      */
     protected $casts = [
-        'is_cover' => 'boolean'
+        //
     ];
 
     /**
      * @param Builder $query
+     * @param User $user
      *
      * @return Builder
      */
-    public function scopeIsCover(Builder $query)
+    public function scopeWhereUser(Builder $query, User $user)
     {
-        return $query->where('is_cover', true);
+        $user = $user ?? user();
+
+        return $query->where('user_id', $user->id);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Evention\Elequent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Evention\Elequent\Traits\HasChildren;
 use Illuminate\Database\Eloquent\SoftDeletes;

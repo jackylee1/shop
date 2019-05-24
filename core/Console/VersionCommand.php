@@ -5,7 +5,7 @@ namespace Evention\Console;
 use Evention\Facades\Evention;
 use Illuminate\Console\Command;
 
-class Version extends Command
+class VersionCommand extends Command
 {
     /**
      * The name and signature of the console command.

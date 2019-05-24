@@ -3,6 +3,7 @@
 namespace Evention\Providers;
 
 use Evention\Services\BookmarkService;
+use Evention\Services\Cart\CartService;
 use Evention\Services\SettingsService;
 use Evention\Services\TemporaryUserService;
 use Evention\Services\UserService;
@@ -20,6 +21,7 @@ class ServicesServiceProvider extends ServiceProvider
         TemporaryUserService::class,
         UserService::class,
         BookmarkService::class,
+        CartService::class,
     ];
 
     /**
@@ -32,6 +34,7 @@ class ServicesServiceProvider extends ServiceProvider
         SettingsService::class => 'setting',
         BookmarkService::class => 'bookmark',
         TemporaryUserService::class => 'temporary_user',
+        CartService::class => 'cart',
     ];
 
     /**

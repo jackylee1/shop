@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
+use Evention\Elequent\Model;
 use Evention\Elequent\Traits\HasChildren;
+use Evention\Elequent\Traits\Relations\HasProducts;
 use Evention\Elequent\Traits\Sluggable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
-    use SoftDeletes, Sluggable, HasChildren;
+    use SoftDeletes,
+        Sluggable,
+        HasChildren,
+        HasProducts;
 
     /** The attributes that are mass assignable.
      *
@@ -81,13 +85,5 @@ class Category extends Model
     public function properties()
     {
         return $this->belongsToMany(Property::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function products()
-    {
-        return $this->hasMany(Product::class);
     }
 }

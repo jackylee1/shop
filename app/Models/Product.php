@@ -5,9 +5,9 @@ namespace App\Models;
 use App\Models\Pivots\ProductProperty;
 use App\Models\User\TemporaryUser;
 use App\Models\User\User;
+use Evention\Elequent\Model;
 use Evention\Elequent\Traits\Sluggable;
 use Evention\Services\BookmarkService;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
 

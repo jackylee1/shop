@@ -2,7 +2,8 @@
 
 namespace Evention\Providers;
 
-use Evention\Console\Version;
+use Evention\Console\ServiceMakeCommand;
+use Evention\Console\VersionCommand;
 use Illuminate\Support\ServiceProvider;
 
 class CommandsServiceProvider extends ServiceProvider
@@ -14,6 +15,7 @@ class CommandsServiceProvider extends ServiceProvider
      */
     protected $commands = [
         'Version' => 'command.evention.version',
+        'ServiceMake' => 'command.evention.make.service',
     ];
 
     /**
@@ -49,7 +51,19 @@ class CommandsServiceProvider extends ServiceProvider
     protected function registerVersionCommand()
     {
         $this->app->singleton('command.evention.version', function ($app) {
-            return new Version();
+            return new VersionCommand();
+        });
+    }
+
+    /**
+     * Register the command.
+     *
+     * @return void
+     */
+    protected function registerServiceMakeCommand()
+    {
+        $this->app->singleton('command.evention.make.service', function ($app) {
+            return $app->make(ServiceMakeCommand::class);
         });
     }
 }

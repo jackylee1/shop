@@ -3,7 +3,6 @@
 namespace Evention\Models;
 
 use Evention\Elequent\Model;
-use Evention\Elequent\Traits\Sluggable;
 use Illuminate\Support\Str;
 
 class Setting extends Model
