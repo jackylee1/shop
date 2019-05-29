@@ -2,6 +2,7 @@
 
 namespace Evention\Models;
 
+use App\Models\Product;
 use App\Models\User\User;
 use Evention\Elequent\Model;
 use Evention\Elequent\Traits\Relations\HasProduct;
@@ -83,10 +84,21 @@ class CartItem extends Model
      *
      * @return Builder
      */
-    public function scopeWhereUser(Builder $query, User $user)
+    public function scopeWhereUser(Builder $query, User $user = null)
     {
         $user = $user ?? user();
 
         return $query->where('user_id', $user->id);
+    }
+
+    /**
+     * @param Builder $query
+     * @param Product $product
+     *
+     * @return Builder
+     */
+    public function scopeWhereProduct(Builder $query, Product $product)
+    {
+        return $query->where('product_id', $product->id);
     }
 }

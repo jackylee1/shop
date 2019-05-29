@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use Evention\Modules\Cart\Facades\Cart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -11,8 +13,17 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+//        Cart::add(Product::first());
+
+        if($request->wantsJson()) {
+            return [
+                'items' => Cart::all(),
+                'count' => Cart::count(),
+            ];
+        }
+
         //
     }
 
@@ -29,12 +40,22 @@ class CartController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
+        $data = $this->validate($request, [
+            'product_id' => ['required', 'exists:products,id'],
+        ]);
 
+        Cart::add(Product::find($data['product_id']));
+
+        return response([
+            'status' => 'success',
+            'count' => Cart::count()
+        ], 200);
     }
 
     /**
@@ -72,13 +93,49 @@ class CartController extends Controller
     }
 
     /**
+     * @param $id
+     * @return \Illuminate\Http\Response
+     */
+    public function increment($id)
+    {
+        $item = Cart::get($id);
+
+        if($item) {
+            Cart::update($item->increment());
+        }
+
+        return response([
+            'status' => 'success',
+            'count' => Cart::count()
+        ], 200);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\Response
+     */
+    public function decrement($id)
+    {
+        $item = Cart::get($id);
+
+        if($item) {
+            Cart::update($item->decrement());
+        }
+
+        return response([
+            'status' => 'success',
+            'count' => Cart::count()
+        ], 200);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($key)
     {
-        //
+        Cart::remove($key);
     }
 }

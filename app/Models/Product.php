@@ -7,6 +7,7 @@ use App\Models\User\TemporaryUser;
 use App\Models\User\User;
 use Evention\Elequent\Model;
 use Evention\Elequent\Traits\Sluggable;
+use Evention\Modules\Cart\Facades\Cart;
 use Evention\Services\BookmarkService;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
@@ -52,7 +53,7 @@ class Product extends Model
      * @var array
      */
     protected $appends = [
-        //
+        'cover'
     ];
 
     /**
@@ -163,5 +164,15 @@ class Product extends Model
     public function hasBookmark($user = null, $force = false)
     {
         return BookmarkService::hasBookmark($this, $user, $force);
+    }
+
+    /**
+     * @param User|null $user
+     *
+     * @return bool
+     */
+    public function inCart($user = null)
+    {
+        return Cart::has($this);
     }
 }

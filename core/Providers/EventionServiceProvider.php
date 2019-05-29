@@ -32,8 +32,6 @@ class EventionServiceProvider extends ServiceProvider
      * Register any application services.
      *
      * @return void
-     *
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function register()
     {

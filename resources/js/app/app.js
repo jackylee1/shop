@@ -23,6 +23,8 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('bookmark-button', require('./components/BookmarkButtonComponent.vue').default);
+Vue.component('cart-button', require('./components/CartButtonComponent.vue').default);
+Vue.component('navbar-cart', require('./components/NavbarCartComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -39,6 +41,7 @@ const app = new Vue({
         return {
             user: window.App.user,
             bookmarks: window.App.bookmarks,
+            cart_items: window.App.cart_items,
         };
     }
 });

@@ -21,7 +21,6 @@ class ServicesServiceProvider extends ServiceProvider
         TemporaryUserService::class,
         UserService::class,
         BookmarkService::class,
-        CartService::class,
     ];
 
     /**
@@ -34,7 +33,6 @@ class ServicesServiceProvider extends ServiceProvider
         SettingsService::class => 'setting',
         BookmarkService::class => 'bookmark',
         TemporaryUserService::class => 'temporary_user',
-        CartService::class => 'cart',
     ];
 
     /**

@@ -24,9 +24,9 @@
                     <b>{{ price($product->price) }}</b> $
                 </span>
 
-                <button type="button" class="btn btn-sm btn-success">
-                    <i class="fas fa-shopping-cart"></i> <span class="buy-text">Buy</span>
-                </button>
+                <cart-button product-id="{{ $product->id }}"
+                             :status="@bool($product->inCart())"
+                             :remove="@bool(isset($cart))"></cart-button>
             </div>
         </div>
     </div>
