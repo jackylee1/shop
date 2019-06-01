@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="text-center mt-2">
-                <a href="#" class="btn btn-success btn-sm">Go to shopping cart</a>
+                <a href="/cart" class="btn btn-success btn-sm">Go to shopping cart</a>
             </div>
         </div>
     </li>

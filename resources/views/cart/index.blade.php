@@ -8,16 +8,25 @@
             </div>
             <div class="col-md-8 col-md-offset-2">
                 <div class="row">
-                    @foreach($bookmarks as $bookmark)
-                        @include('products._item', ['product' => $bookmark->product])
+                    @foreach($cart as $item)
+                        @include('cart._item')
                     @endforeach
 
-                    <div class="col-12 text-center list-empty @if(! $bookmarks->isEmpty()) d-none @endif">
-                        <div class="alert alert-info">Your bookmarks list is empty</div>
+                    <div class="col-12 text-center list-empty @if(! $cart->isEmpty()) d-none @endif">
+                        <div class="alert alert-info">Your shopping cart is empty</div>
                     </div>
 
-                    <div class="col-12 d-flex justify-content-center">
-                        {{ $bookmarks->render() }}
+                    <div class="col-12">
+                        <div class="row border-top pt-3 align-items-center">
+                            <div class="col">
+                                <p>
+                                    Total: <b class="cart-total-price">{{ price($total) }}$</b>
+                                </p>
+                            </div>
+                            <div class="col text-right">
+                                <button class="btn btn-success">Checkout</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

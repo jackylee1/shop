@@ -26,3 +26,8 @@ Breadcrumbs::for('bookmarks.index', function ($trail) {
     $trail->parent('home');
     $trail->push('My bookmarks', route('bookmarks.index'));
 });
+
+Breadcrumbs::for('cart.index', function ($trail) {
+    $trail->parent('home');
+    $trail->push('My shopping cart', route('cart.index'));
+});

@@ -25,8 +25,7 @@ Route::post('bookmarks', 'BookmarksController@store')->name('categories.store');
 Route::get('cart', 'CartController@index')->name('cart.index');
 Route::post('cart', 'CartController@store')->name('cart.store');
 Route::delete('cart/{key}', 'CartController@destroy')->name('cart.destroy');
-Route::patch('cart/{key}/increment', 'CartController@increment')->name('cart.increment');
-Route::patch('cart/{key}/decrement', 'CartController@decrement')->name('cart.decrement');
+Route::patch('cart/{key}/{type}', 'CartController@update')->name('cart.update');
 
 //Route::resource('products', 'ProductsController');
 //Route::resource('categories', 'CategoriesController');

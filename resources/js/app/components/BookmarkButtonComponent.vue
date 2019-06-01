@@ -20,6 +20,10 @@
         watch: {
             'bookmark_status': function (newVal) {
                 if(this.remove && ! newVal) {
+                    if(this.$root.bookmarks == 0) {
+                        $(".list-empty").removeClass('d-none');
+                    }
+
                     $(`[data-product-item-id='${this.productId}']`).remove();
                 }
             }
