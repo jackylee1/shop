@@ -31,3 +31,8 @@ Breadcrumbs::for('cart.index', function ($trail) {
     $trail->parent('home');
     $trail->push('My shopping cart', route('cart.index'));
 });
+
+Breadcrumbs::for('order.index', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Checkout', route('order.index'));
+});

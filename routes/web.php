@@ -27,6 +27,8 @@ Route::post('cart', 'CartController@store')->name('cart.store');
 Route::delete('cart/{key}', 'CartController@destroy')->name('cart.destroy');
 Route::patch('cart/{key}/{type}', 'CartController@update')->name('cart.update');
 
+Route::get('order', 'OrderController@index')->name('order.index');
+
 //Route::resource('products', 'ProductsController');
 //Route::resource('categories', 'CategoriesController');
 //Route::resource('bookmarks', 'BookmarksController');
