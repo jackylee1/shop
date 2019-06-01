@@ -11,7 +11,7 @@
             <div class="cart-items" v-else>
                 <div class="cart-item" v-for="item in items">
                     <a href="#" class="item-image">
-                        <img :src="item.product.cover" class="img-fluid">
+                        <img :src="`/${item.product.cover}`" class="img-fluid">
                     </a>
                     <div class="item-info">
                         <a href="#" @click.stop="removeItem(item)" class="remove-item">

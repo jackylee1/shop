@@ -59,9 +59,9 @@
                 </div>
 
                 <div class="btn-group-vertical w-100">
-                    <a href="#" class="btn btn-success d-flex justify-content-center align-items-baseline">
-                        <i class="fa fa-shopping-bag mr-2"></i> <span>Add to cart</span>
-                    </a>
+                    <product-cart-button product-id="{{ $product->id }}"
+                                         :status="@bool($product->inCart())"></product-cart-button>
+
                     <a href="#" class="btn btn-secondary d-flex justify-content-center align-items-baseline">
                         <i class="fa fa-shopping-cart mr-2"></i> <span>Buy now</span>
                     </a>
