@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\Pivots\ProductProperty;
-use App\Models\User\TemporaryUser;
 use App\Models\User\User;
 use Evention\Elequent\Model;
+use App\Models\User\TemporaryUser;
+use Illuminate\Support\Facades\Cache;
+use App\Models\Pivots\ProductProperty;
+use Evention\Services\BookmarkService;
 use Evention\Elequent\Traits\Sluggable;
 use Evention\Modules\Cart\Facades\Cart;
-use Evention\Services\BookmarkService;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Cache;
 
 class Product extends Model
 {
@@ -53,7 +53,7 @@ class Product extends Model
      * @var array
      */
     protected $appends = [
-        'cover'
+        'cover',
     ];
 
     /**
@@ -62,7 +62,7 @@ class Product extends Model
      * @var array
      */
     protected $with = [
-        'category'
+        'category',
     ];
 
     /**
@@ -134,7 +134,7 @@ class Product extends Model
      */
     public function getCoverAttribute()
     {
-        if(Cache::has($this->getCoverCacheKey())) {
+        if (Cache::has($this->getCoverCacheKey())) {
             return Cache::get($this->getCoverCacheKey());
         }
 
@@ -150,7 +150,7 @@ class Product extends Model
      */
     public function getCoverCacheKey()
     {
-        return 'product-cover-' . $this->id;
+        return 'product-cover-'.$this->id;
     }
 
     /**

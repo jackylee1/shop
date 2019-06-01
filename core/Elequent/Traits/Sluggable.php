@@ -7,14 +7,14 @@ use Illuminate\Support\Str;
 trait Sluggable
 {
     /**
-     * Slug field
+     * Slug field.
      *
      * @var string
      */
     protected $slugField = 'slug';
 
     /**
-     * Model title field
+     * Model title field.
      *
      * @var string
      */
@@ -61,7 +61,7 @@ trait Sluggable
      */
     public function setSlugAttribute($value)
     {
-        if($this->where($this->slugField, ($slug = Str::slug($value)))->exists()) {
+        if ($this->where($this->slugField, ($slug = Str::slug($value)))->exists()) {
             $slug = "{$slug}-{$this->id}";
         }
 

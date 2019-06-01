@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        if(app()->environment('installing')) {
+        if (app()->environment('installing')) {
             $this->call(SettingsSeeder::class);
         } else {
             $this->createDefaultUser()

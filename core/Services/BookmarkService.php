@@ -2,11 +2,11 @@
 
 namespace Evention\Services;
 
-use App\Models\Bookmark;
 use App\Models\Product;
-use App\Models\User\TemporaryUser;
+use App\Models\Bookmark;
 use App\Models\User\User;
-use \Evention\Services\Facades\TemporaryUser as TemporaryUserService;
+use App\Models\User\TemporaryUser;
+use Evention\Services\Facades\TemporaryUser as TemporaryUserService;
 
 class BookmarkService extends Service
 {
@@ -25,7 +25,7 @@ class BookmarkService extends Service
 
         $product = self::getProduct($product);
 
-        if(\Cache::has(self::getCacheHasBookmarkKey($product, $user)) && ! $force) {
+        if (\Cache::has(self::getCacheHasBookmarkKey($product, $user)) && ! $force) {
             return self::getCachedBookmarkStatus($product, $user);
         }
 
@@ -39,7 +39,7 @@ class BookmarkService extends Service
     /**
      * @param bool $force
      *
-     * @return integer
+     * @return int
      *
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
@@ -47,7 +47,7 @@ class BookmarkService extends Service
     {
         $user = user();
 
-        if(\Cache::has(self::getCacheCountBookmarksKey($user)) && ! $force) {
+        if (\Cache::has(self::getCacheCountBookmarksKey($user)) && ! $force) {
             return \Cache::get(self::getCacheCountBookmarksKey($user));
         }
 
@@ -84,8 +84,8 @@ class BookmarkService extends Service
     {
         $temporary = TemporaryUserService::id();
 
-        foreach(Bookmark::where('temporary_user_id', $temporary)->get() as $bookmark) {
-            if(Bookmark::where('user_id', $user->id)->where('product_id', $bookmark->product->id)->exists()) {
+        foreach (Bookmark::where('temporary_user_id', $temporary)->get() as $bookmark) {
+            if (Bookmark::where('user_id', $user->id)->where('product_id', $bookmark->product->id)->exists()) {
                 Bookmark::where('user_id', $user->id)
                     ->where('product_id', $bookmark->product->id)
                     ->update([
@@ -112,7 +112,7 @@ class BookmarkService extends Service
 
         \Cache::forget(self::getCacheCountBookmarksKey($user));
 
-        foreach(Bookmark::byCurrentUser()->get() as $bookmark) {
+        foreach (Bookmark::byCurrentUser()->get() as $bookmark) {
             \Cache::forget(self::getCacheHasBookmarkKey($bookmark->product, $user));
         }
     }
@@ -124,7 +124,7 @@ class BookmarkService extends Service
      */
     protected static function getCacheCountBookmarksKey($user)
     {
-        return 'bookmarks-user-count-'. user_type($user) .'-'. $user->id;
+        return 'bookmarks-user-count-'.user_type($user).'-'.$user->id;
     }
 
     /**
@@ -135,7 +135,7 @@ class BookmarkService extends Service
      */
     protected static function getUser($user, $force)
     {
-        if(is_bool($user)) {
+        if (is_bool($user)) {
             $force = $user;
 
             $user = user();
@@ -166,7 +166,7 @@ class BookmarkService extends Service
      */
     protected static function getCacheHasBookmarkKey(Product $product, $user)
     {
-        return 'hasBookmark-user-product-'. user_type($user) .'-'. $user->id . '-' . $product->id;
+        return 'hasBookmark-user-product-'.user_type($user).'-'.$user->id.'-'.$product->id;
     }
 
     /**
@@ -192,6 +192,6 @@ class BookmarkService extends Service
      */
     protected static function getCachedBookmarkStatus(Product $product, $user): bool
     {
-        return (bool)\Cache::get(self::getCacheHasBookmarkKey($product, $user));
+        return (bool) \Cache::get(self::getCacheHasBookmarkKey($product, $user));
     }
 }

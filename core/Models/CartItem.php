@@ -5,9 +5,9 @@ namespace Evention\Models;
 use App\Models\Product;
 use App\Models\User\User;
 use Evention\Elequent\Model;
-use Evention\Elequent\Traits\Relations\HasProduct;
-use Evention\Elequent\Traits\Relations\HasUser;
 use Illuminate\Database\Eloquent\Builder;
+use Evention\Elequent\Traits\Relations\HasUser;
+use Evention\Elequent\Traits\Relations\HasProduct;
 
 class CartItem extends Model
 {

@@ -3,7 +3,7 @@
 namespace Evention\Http\Middleware;
 
 use Closure;
-use \Evention\Services\Facades\TemporaryUser as TemporaryUserService;
+use Evention\Services\Facades\TemporaryUser as TemporaryUserService;
 
 class TemporaryUser
 {
@@ -16,14 +16,14 @@ class TemporaryUser
      */
     public function handle($request, Closure $next)
     {
-        if(! auth()->guest()) {
+        if (! auth()->guest()) {
             return $next($request);
         }
 
         $cookie = config('evention.temporary_user.cookie');
 
-        if($request->hasCookie($cookie)) {
-            if(TemporaryUserService::hasToken()) {
+        if ($request->hasCookie($cookie)) {
+            if (TemporaryUserService::hasToken()) {
                 return $next($request);
             }
         }

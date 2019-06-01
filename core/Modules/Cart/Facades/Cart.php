@@ -4,8 +4,8 @@ namespace Evention\Modules\Cart\Facades;
 
 use App\Models\Product;
 use App\Models\User\User;
-use Evention\Modules\Cart\CartItem;
 use Illuminate\Support\Collection;
+use Evention\Modules\Cart\CartItem;
 use Illuminate\Support\Facades\Facade;
 
 /**

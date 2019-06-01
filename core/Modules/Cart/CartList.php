@@ -2,9 +2,9 @@
 
 namespace Evention\Modules\Cart;
 
-use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Collection;
+use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Contracts\Support\Arrayable;
 
 class CartList implements Arrayable, Jsonable
 {
@@ -43,7 +43,7 @@ class CartList implements Arrayable, Jsonable
      */
     public function update($key, CartItem $item = null)
     {
-        if($key instanceof CartItem) {
+        if ($key instanceof CartItem) {
             $item = $key;
             $key = $item->getKey();
         }
@@ -60,7 +60,7 @@ class CartList implements Arrayable, Jsonable
      */
     public function remove($key)
     {
-        if($key instanceof CartItem) {
+        if ($key instanceof CartItem) {
             $key = $key->getKey();
         }
 
@@ -76,7 +76,7 @@ class CartList implements Arrayable, Jsonable
      */
     public function get($key)
     {
-        if($key instanceof CartItem) {
+        if ($key instanceof CartItem) {
             $key = $key->getKey();
         }
 
@@ -96,7 +96,7 @@ class CartList implements Arrayable, Jsonable
      */
     public function count()
     {
-        return $this->items->sum(function (CartItem $item)  {
+        return $this->items->sum(function (CartItem $item) {
             return $item->count;
         });
     }
@@ -106,7 +106,7 @@ class CartList implements Arrayable, Jsonable
      */
     public function price()
     {
-        return $this->items->sum(function (CartItem $item)  {
+        return $this->items->sum(function (CartItem $item) {
             return $item->price;
         });
     }
@@ -128,7 +128,7 @@ class CartList implements Arrayable, Jsonable
      */
     public function has($key)
     {
-        if($key instanceof CartItem) {
+        if ($key instanceof CartItem) {
             $key = $key->getKey();
         }
 

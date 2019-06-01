@@ -2,18 +2,18 @@
 
 namespace App\Models;
 
-use App\Models\Pivots\ProductProperty;
+use Illuminate\Support\Str;
 use Evention\Elequent\Model;
+use App\Models\Pivots\ProductProperty;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
 
 class Property extends Model
 {
     use SoftDeletes;
 
     /**
-     * Property types
+     * Property types.
      */
     const TYPE_TEXT = 0;
     const TYPE_IMAGE = 1;
@@ -83,7 +83,7 @@ class Property extends Model
      * @var array
      */
     protected $casts = [
-        'values' => 'array'
+        'values' => 'array',
     ];
 
     /**
@@ -152,10 +152,10 @@ class Property extends Model
             self::TYPE_NUMBER => 'number',
             self::TYPE_SELECT => 'select',
             self::TYPE_TEXTAREA => 'textarea',
-            self::TYPE_SELECT_MULTI => 'multiselect'
+            self::TYPE_SELECT_MULTI => 'multiselect',
         ];
 
-        if(! $withNames) {
+        if (! $withNames) {
             return array_keys($list);
         }
 
