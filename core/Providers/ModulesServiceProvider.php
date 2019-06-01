@@ -2,10 +2,10 @@
 
 namespace Evention\Providers;
 
-use Evention\Console\ServiceMakeCommand;
 use Evention\Console\VersionCommand;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Evention\Console\ServiceMakeCommand;
 
 class ModulesServiceProvider extends ServiceProvider
 {
@@ -19,8 +19,7 @@ class ModulesServiceProvider extends ServiceProvider
         /*
          * Register Modules Service Providers
          */
-        foreach (config('modules.providers') as $provider)
-        {
+        foreach (config('modules.providers') as $provider) {
             $this->app->register($provider);
         }
 
@@ -29,8 +28,7 @@ class ModulesServiceProvider extends ServiceProvider
          */
         $loader = AliasLoader::getInstance();
 
-        foreach (config('modules.aliases') as $alias => $facade)
-        {
+        foreach (config('modules.aliases') as $alias => $facade) {
             $loader->alias($alias, $facade);
         }
     }

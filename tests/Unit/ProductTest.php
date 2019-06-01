@@ -2,13 +2,13 @@
 
 namespace Tests\Unit;
 
-use App\Models\Category;
+use Tests\TestCase;
 use App\Models\Image;
 use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Str;
-use Tests\TestCase;
 
 class ProductTest extends TestCase
 {
@@ -74,7 +74,7 @@ class ProductTest extends TestCase
             'title' => $this->product->title,
         ]);
 
-        $this->assertEquals(Str::slug($product->title) . '-' . $product->id, $product->slug);
+        $this->assertEquals(Str::slug($product->title).'-'.$product->id, $product->slug);
 
         $this->assertEquals(Str::slug($this->product->title), $this->product->slug);
     }

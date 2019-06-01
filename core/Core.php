@@ -3,8 +3,8 @@
 namespace Evention;
 
 use Evention\Contracts\CoreContract;
-use Evention\Providers\CommandsServiceProvider;
 use Evention\Providers\ModulesServiceProvider;
+use Evention\Providers\CommandsServiceProvider;
 use Evention\Providers\ServicesServiceProvider;
 use Illuminate\Contracts\Foundation\Application;
 
@@ -26,7 +26,7 @@ class Core
      * @var array
      */
     protected $aliases = [
-        'core'                 => [CoreContract::class, Core::class],
+        'core'                 => [CoreContract::class, self::class],
     ];
 
     /**

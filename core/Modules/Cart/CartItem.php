@@ -4,8 +4,8 @@ namespace Evention\Modules\Cart;
 
 use App\Models\Product;
 use App\Models\User\User;
-use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Contracts\Support\Arrayable;
 
 /**
  * @property float $price
@@ -21,7 +21,7 @@ class CartItem implements Arrayable, Jsonable
     /**
      * @var int
      */
-    public $count =  1;
+    public $count = 1;
 
     /**
      * @var \Evention\Models\CartItem|null
@@ -42,7 +42,7 @@ class CartItem implements Arrayable, Jsonable
      */
     public function __construct(Product $product, $count = 1, User $user = null)
     {
-        if($count instanceof User) {
+        if ($count instanceof User) {
             $count = 1;
             $user = $count;
         }
@@ -51,7 +51,7 @@ class CartItem implements Arrayable, Jsonable
         $this->count = $count ?? 1;
         $this->user = $user ?? auth()->user();
 
-        if(! is_null($this->user)) {
+        if (! is_null($this->user)) {
             $this->model = $this->getModel();
         }
 
@@ -67,14 +67,14 @@ class CartItem implements Arrayable, Jsonable
     {
         $product = Product::find($attributes['product_id']);
 
-        if(! $product) {
+        if (! $product) {
             return false;
         }
 
-        if(isset($attributes['user_id'])) {
+        if (isset($attributes['user_id'])) {
             $user = User::find($attributes['user_id']);
         } else {
-            if(auth()->check()) {
+            if (auth()->check()) {
                 $user = auth()->user();
             }
         }
@@ -135,7 +135,7 @@ class CartItem implements Arrayable, Jsonable
      */
     public function delete()
     {
-        if(! is_null($this->model)) {
+        if (! is_null($this->model)) {
             return $this->model->delete();
         }
 
@@ -143,15 +143,15 @@ class CartItem implements Arrayable, Jsonable
     }
 
     /**
-     * Store CartItem to model (\Evention\Models\CartItem)
+     * Store CartItem to model (\Evention\Models\CartItem).
      *
      * @return bool
      */
     public function store()
     {
-        if(! is_null($this->model)) {
+        if (! is_null($this->model)) {
             return $this->model->update([
-                'count' => $this->count
+                'count' => $this->count,
             ]);
         }
 
@@ -165,24 +165,24 @@ class CartItem implements Arrayable, Jsonable
     {
         return app(config('cart.model'))->firstOrCreate([
             'product_id' => $this->product->id,
-            'user_id' => $this->user->id
+            'user_id' => $this->user->id,
         ], [
             'count' => $this->count,
         ]);
     }
 
     /**
-     * Get item unique key
+     * Get item unique key.
      *
      * @return mixed|string
      */
     public function getKey()
     {
-        if(is_null($this->user)) {
+        if (is_null($this->user)) {
             return $this->product->id;
         }
 
-        return $this->product->id . "_" . $this->user->id;
+        return $this->product->id.'_'.$this->user->id;
     }
 
     /**
@@ -192,11 +192,11 @@ class CartItem implements Arrayable, Jsonable
      */
     public function __get($name)
     {
-        if($name == 'key') {
+        if ($name == 'key') {
             return $this->getKey();
         }
 
-        if($name == 'price') {
+        if ($name == 'price') {
             return $this->price();
         }
     }
@@ -216,7 +216,7 @@ class CartItem implements Arrayable, Jsonable
             'key' => $this->key,
         ];
 
-        if(! is_null($this->user)) {
+        if (! is_null($this->user)) {
             $attributes['user_id'] = $this->user->id;
             $attributes['user'] = $this->user;
         }

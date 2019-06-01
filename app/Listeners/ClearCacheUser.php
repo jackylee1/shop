@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use Evention\Services\BookmarkService;
 use Illuminate\Auth\Events\Logout;
+use Evention\Services\BookmarkService;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -27,7 +27,7 @@ class ClearCacheUser
      */
     public function handle($event)
     {
-        if($event instanceof Logout) {
+        if ($event instanceof Logout) {
             BookmarkService::clearCache(temp_user());
         }
 

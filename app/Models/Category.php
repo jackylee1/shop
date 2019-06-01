@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Evention\Elequent\Model;
-use Evention\Elequent\Traits\HasChildren;
-use Evention\Elequent\Traits\Relations\HasProducts;
 use Evention\Elequent\Traits\Sluggable;
+use Evention\Elequent\Traits\HasChildren;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Evention\Elequent\Traits\Relations\HasProducts;
 
 class Category extends Model
 {

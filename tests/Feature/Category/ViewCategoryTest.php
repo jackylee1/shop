@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Product;
 
-use App\Models\Category;
-use App\Models\Product;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
+use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ViewCategoryTest extends TestCase
 {

@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Evention\Elequent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Evention\Elequent\Traits\HasChildren;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Evention\Elequent\Traits\Relations\HasUser;
 use Evention\Elequent\Traits\Relations\HasProduct;
@@ -59,7 +59,7 @@ class Review extends Model
      * @var array
      */
     protected $with = [
-        'children'
+        'children',
     ];
 
     /**

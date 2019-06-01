@@ -2,17 +2,17 @@
 
 namespace Evention\Providers;
 
-use Evention\Services\BookmarkService;
-use Evention\Services\Cart\CartService;
-use Evention\Services\SettingsService;
-use Evention\Services\TemporaryUserService;
 use Evention\Services\UserService;
+use Evention\Services\BookmarkService;
+use Evention\Services\SettingsService;
+use Evention\Services\Cart\CartService;
 use Illuminate\Support\ServiceProvider;
+use Evention\Services\TemporaryUserService;
 
 class ServicesServiceProvider extends ServiceProvider
 {
     /**
-     * Array of services need to register
+     * Array of services need to register.
      *
      * @var array
      */
@@ -24,7 +24,7 @@ class ServicesServiceProvider extends ServiceProvider
     ];
 
     /**
-     * Array of services aliases
+     * Array of services aliases.
      *
      * @var array
      */
@@ -54,12 +54,11 @@ class ServicesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        foreach ($this->services as $service)
-        {
-            if(isset($this->alias[$service])) {
-                $name = "service.". $this->alias[$service];
+        foreach ($this->services as $service) {
+            if (isset($this->alias[$service])) {
+                $name = 'service.'.$this->alias[$service];
 
-                $this->app->alias("service.". $this->alias[$service], $service);
+                $this->app->alias('service.'.$this->alias[$service], $service);
             } else {
                 $name = $service;
             }

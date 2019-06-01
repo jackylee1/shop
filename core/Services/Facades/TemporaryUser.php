@@ -2,8 +2,8 @@
 
 namespace Evention\Services\Facades;
 
-use Evention\Services\TemporaryUserService;
 use Illuminate\Support\Facades\Facade;
+use Evention\Services\TemporaryUserService;
 
 /**
  * @method static \App\Models\User\TemporaryUser getByToken(string $token)

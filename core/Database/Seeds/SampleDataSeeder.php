@@ -4,14 +4,14 @@ namespace Evention\Database\Seeds;
 
 use Closure;
 use App\Models\Image;
-use App\Models\Product;
 use App\Models\Review;
+use App\Models\Product;
 use Illuminate\Support\Facades\Schema;
 
 class SampleDataSeeder extends Seeder
 {
     /**
-     * Seed some data
+     * Seed some data.
      *
      * @return void
      */
@@ -25,7 +25,7 @@ class SampleDataSeeder extends Seeder
             ], 1, false);
 
             $this->callFactory(Image::class, [
-                'product_id' => $product->id
+                'product_id' => $product->id,
             ], 1, false);
         }
 

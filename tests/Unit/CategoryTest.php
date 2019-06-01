@@ -2,11 +2,11 @@
 
 namespace Tests\Unit;
 
-use App\Models\Category;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use Tests\TestCase;
+use App\Models\Category;
+use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class CategoryTest extends TestCase
 {
@@ -40,7 +40,7 @@ class CategoryTest extends TestCase
             'title' => $this->category->title,
         ]);
 
-        $this->assertEquals(Str::slug($category->title) . '-' . $category->id, $category->slug);
+        $this->assertEquals(Str::slug($category->title).'-'.$category->id, $category->slug);
 
         $this->assertEquals(Str::slug($this->category->title), $this->category->slug);
     }

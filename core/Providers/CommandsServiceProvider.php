@@ -2,9 +2,9 @@
 
 namespace Evention\Providers;
 
-use Evention\Console\ServiceMakeCommand;
 use Evention\Console\VersionCommand;
 use Illuminate\Support\ServiceProvider;
+use Evention\Console\ServiceMakeCommand;
 
 class CommandsServiceProvider extends ServiceProvider
 {

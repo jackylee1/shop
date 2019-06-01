@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Listeners\ChangeTemporaryUser;
 use App\Listeners\ClearCacheUser;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
+use App\Listeners\ChangeTemporaryUser;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 

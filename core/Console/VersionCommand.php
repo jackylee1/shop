@@ -38,7 +38,7 @@ class VersionCommand extends Command
      */
     public function handle()
     {
-        $message = "Evention Shop CMS <info>" . Evention::version() . "</info>";
+        $message = 'Evention Shop CMS <info>'.Evention::version().'</info>';
 
         $this->line($message);
     }
