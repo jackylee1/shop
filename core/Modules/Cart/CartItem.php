@@ -49,7 +49,7 @@ class CartItem implements Arrayable, Jsonable
 
         $this->product = $product;
         $this->count = $count ?? 1;
-        $this->user = $user;
+        $this->user = $user ?? auth()->user();
 
         if(! is_null($this->user)) {
             $this->model = $this->getModel();
@@ -73,6 +73,10 @@ class CartItem implements Arrayable, Jsonable
 
         if(isset($attributes['user_id'])) {
             $user = User::find($attributes['user_id']);
+        } else {
+            if(auth()->check()) {
+                $user = auth()->user();
+            }
         }
 
         return new self($product, $attributes['count'] ?? 1, $user ?? null);
@@ -159,7 +163,7 @@ class CartItem implements Arrayable, Jsonable
      */
     public function getModel()
     {
-        return app(config('app.model'))->firstOrCreate([
+        return app(config('cart.model'))->firstOrCreate([
             'product_id' => $this->product->id,
             'user_id' => $this->user->id
         ], [

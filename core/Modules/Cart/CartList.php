@@ -2,7 +2,6 @@
 
 namespace Evention\Modules\Cart;
 
-use App\Models\Product;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Collection;
@@ -134,6 +133,14 @@ class CartList implements Arrayable, Jsonable
         }
 
         return $this->items->has($key);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return $this->items->isEmpty();
     }
 
     /**

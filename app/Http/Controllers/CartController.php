@@ -15,8 +15,6 @@ class CartController extends Controller
      */
     public function index(Request $request)
     {
-//        Cart::add(Product::first());
-
         if($request->wantsJson()) {
             return [
                 'items' => Cart::all(),
@@ -24,7 +22,7 @@ class CartController extends Controller
             ];
         }
 
-        //
+        dd(Cart::all());
     }
 
     /**
@@ -102,6 +100,7 @@ class CartController extends Controller
 
         if($item) {
             Cart::update($item->increment());
+            Cart::store();
         }
 
         return response([
@@ -120,6 +119,7 @@ class CartController extends Controller
 
         if($item) {
             Cart::update($item->decrement());
+            Cart::store();
         }
 
         return response([

@@ -35,11 +35,7 @@ class Cart
         $this->session = $session;
         $this->events = $events;
 
-        $items = $this->session->get(config('cart.session'));
-
-        $this->items = $items instanceof CartList
-                ? $items
-                : new CartList;
+        $this->loadItems();
     }
 
     /**
@@ -209,5 +205,40 @@ class Cart
         }
 
         return $key;
+    }
+
+    protected function loadItems()
+    {
+        $items = $this->session->get(config('cart.session'));
+
+        if(auth()->check()) {
+            if(! ($items instanceof CartList) || $items->isEmpty()) {
+                $items = $this->getListFromModel();
+            } else {
+                $count = app(config('cart.model'))->whereUser()->sum('count');
+
+                if($count != $items->count()) {
+                    $items = $this->getListFromModel();
+                }
+            }
+        }
+
+        $this->items = $items instanceof CartList
+            ? $items
+            : new CartList;
+    }
+
+    /**
+     * @return CartList
+     */
+    protected function getListFromModel()
+    {
+        $items = new CartList;
+
+        foreach(app(config('cart.model'))->whereUser()->get() as $item) {
+            $items->add(CartItem::fromModel($item));
+        }
+
+        return $items;
     }
 }

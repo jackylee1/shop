@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'cartItem' => \App\Models\CartItem::class,
+    'model' => \App\Models\CartItem::class,
 
     /*
     |--------------------------------------------------------------------------
