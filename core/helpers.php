@@ -1,12 +1,12 @@
 <?php
 
-if(! function_exists('isRoute')) {
+if (! function_exists('isRoute')) {
 
     /**
      * Helper to determinate if name of route is current route.
      *
      * @param $name
-     * @return boolean
+     * @return bool
      */
     function isRoute($name)
     {
@@ -14,7 +14,7 @@ if(! function_exists('isRoute')) {
     }
 }
 
-if(! function_exists('setting')) {
+if (! function_exists('setting')) {
 
     /**
      * @param string $key
@@ -27,10 +27,10 @@ if(! function_exists('setting')) {
     }
 }
 
-if(! function_exists('price')) {
+if (! function_exists('price')) {
 
     /**
-     * Helper to format price
+     * Helper to format price.
      *
      * @param $amount
      * @return string
@@ -43,12 +43,12 @@ if(! function_exists('price')) {
     }
 }
 
-if(! function_exists('bool_string')) {
+if (! function_exists('bool_string')) {
 
     /**
-     * bool type to string 'true' or 'false'
+     * bool type to string 'true' or 'false'.
      *
-     * @param boolean
+     * @param bool
      *
      * @return string
      */
@@ -58,8 +58,7 @@ if(! function_exists('bool_string')) {
     }
 }
 
-
-if(! function_exists('bookmarks_count')) {
+if (! function_exists('bookmarks_count')) {
 
     /**
      * @param bool $force
@@ -74,16 +73,16 @@ if(! function_exists('bookmarks_count')) {
     }
 }
 
-if(! function_exists('user')) {
+if (! function_exists('user')) {
 
     /**
-     * Get current user
+     * Get current user.
      *
      * @return \App\Models\User\User|\App\Models\User\TemporaryUser
      */
     function user()
     {
-        if(auth()->guest()) {
+        if (auth()->guest()) {
             return \Evention\Services\Facades\TemporaryUser::user();
         }
 
@@ -91,7 +90,7 @@ if(! function_exists('user')) {
     }
 }
 
-if(! function_exists('temp_user')) {
+if (! function_exists('temp_user')) {
 
     /**
      * @return \App\Models\User\TemporaryUser
@@ -102,10 +101,10 @@ if(! function_exists('temp_user')) {
     }
 }
 
-if(! function_exists('user_type')) {
-    
+if (! function_exists('user_type')) {
+
     /**
-     * Return the current or giver user type
+     * Return the current or giver user type.
      *
      * @param \App\Models\User\User|\App\Models\User\TemporaryUser
      *
@@ -113,7 +112,7 @@ if(! function_exists('user_type')) {
      */
     function user_type($user = null)
     {
-        if(! is_null($user)) {
+        if (! is_null($user)) {
             return $user instanceof \App\Models\User\TemporaryUser
                 ? ' temporary_user'
                 : 'user';

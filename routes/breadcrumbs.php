@@ -13,7 +13,7 @@ Breadcrumbs::for('products.show', function ($trail, \App\Models\Product $product
 });
 
 Breadcrumbs::for('categories.show', function ($trail, \App\Models\Category $category) {
-    if($category->isChild()) {
+    if ($category->isChild()) {
         $trail->parent('categories.show', $category->parent);
     } else {
         $trail->parent('home');

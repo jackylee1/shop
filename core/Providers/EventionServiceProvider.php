@@ -3,8 +3,8 @@
 namespace Evention\Providers;
 
 use Evention\Contracts\CoreContract;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Foundation\Application;
 
 class EventionServiceProvider extends ServiceProvider
 {
@@ -41,7 +41,7 @@ class EventionServiceProvider extends ServiceProvider
     }
 
     /**
-     * Load Blade Directives
+     * Load Blade Directives.
      *
      * @return void
      */

@@ -72,7 +72,7 @@ class Image extends Model
      * @var array
      */
     protected $casts = [
-        'is_cover' => 'boolean'
+        'is_cover' => 'boolean',
     ];
 
     /**

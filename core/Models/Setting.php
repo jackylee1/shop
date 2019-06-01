@@ -2,13 +2,13 @@
 
 namespace Evention\Models;
 
-use Evention\Elequent\Model;
 use Illuminate\Support\Str;
+use Evention\Elequent\Model;
 
 class Setting extends Model
 {
     /**
-     * Setting types
+     * Setting types.
      */
     const TYPE_TEXT = 0;
     const TYPE_IMAGE = 1;
@@ -109,10 +109,10 @@ class Setting extends Model
             self::TYPE_NUMBER => 'number',
             self::TYPE_SELECT => 'select',
             self::TYPE_TEXTAREA => 'textarea',
-            self::TYPE_SELECT_MULTI => 'multiselect'
+            self::TYPE_SELECT_MULTI => 'multiselect',
         ];
 
-        if(! $withNames) {
+        if (! $withNames) {
             return array_keys($list);
         }
 

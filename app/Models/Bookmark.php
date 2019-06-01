@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Evention\Elequent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Evention\Elequent\Traits\Relations\HasUser;
 use Evention\Elequent\Traits\Relations\HasProduct;
 use Evention\Elequent\Traits\Relations\HasTemporaryUser;
-use Evention\Elequent\Traits\Relations\HasUser;
-use Illuminate\Database\Eloquent\Builder;
 
 class Bookmark extends Model
 {
@@ -81,7 +81,7 @@ class Bookmark extends Model
      */
     public function client()
     {
-        if(is_null($this->user_id)) {
+        if (is_null($this->user_id)) {
             return $this->temporary_user();
         }
 
@@ -95,7 +95,7 @@ class Bookmark extends Model
      */
     public function scopeByCurrentUser(Builder $query)
     {
-        return $query->where(user_type() . "_id", user()->id);
+        return $query->where(user_type().'_id', user()->id);
     }
 
     /**

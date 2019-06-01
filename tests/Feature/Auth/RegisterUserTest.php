@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Models\User\User;
 use Tests\TestCase;
+use App\Models\User\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -101,7 +101,7 @@ class RegisterUserTest extends TestCase
         $this->from(route('register'));
 
         $response = $this->post(route('register'), $this->validParams([
-            'email' => substr(str_repeat('a', 256) . '@example.com', -256),
+            'email' => substr(str_repeat('a', 256).'@example.com', -256),
         ]));
 
         $response->assertRedirect(route('register'));
@@ -151,7 +151,7 @@ class RegisterUserTest extends TestCase
 
         $response = $this->post(route('register'), $this->validParams([
             'password' => 'foo',
-            'password_confirmation' => 'bar'
+            'password_confirmation' => 'bar',
         ]));
 
         $response->assertRedirect(route('register'));

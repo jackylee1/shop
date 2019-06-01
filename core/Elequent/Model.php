@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model as BaseModel;
 class Model extends BaseModel
 {
     /**
-     * Delete the first record matching the attributes or create it
+     * Delete the first record matching the attributes or create it.
      *
      * @param array $attributes
      * @param array $values
@@ -26,7 +26,7 @@ class Model extends BaseModel
     }
 
     /**
-     * Toggle fields of the first record matching the attributes or create it
+     * Toggle fields of the first record matching the attributes or create it.
      *
      * @param array $attributes
      * @param array $values
@@ -42,7 +42,7 @@ class Model extends BaseModel
             $values = [];
 
             foreach ($fields as $field) {
-                $values[$field] = ! ((boolean) $instance->$field);
+                $values[$field] = ! ((bool) $instance->$field);
             }
 
             return $instance->fill($values)->save();

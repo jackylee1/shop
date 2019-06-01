@@ -4,8 +4,8 @@ namespace Evention\Modules\Cart;
 
 use App\Models\Product;
 use App\Models\User\User;
-use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Session\SessionManager;
+use Illuminate\Contracts\Events\Dispatcher;
 
 class Cart
 {
@@ -47,7 +47,7 @@ class Cart
      */
     public function add(Product $product, $count = 1, User $user = null)
     {
-        if($count instanceof User) {
+        if ($count instanceof User) {
             $user = $count;
             $count = 1;
         }
@@ -56,7 +56,7 @@ class Cart
 
         $cartItem = $this->createCartItem($product, $count, $user);
 
-        if($this->items->has($cartItem)) {
+        if ($this->items->has($cartItem)) {
             $cartItem = $this->items->get($cartItem);
             $cartItem->increment($count);
         }
@@ -106,13 +106,13 @@ class Cart
      */
     public function remove($item, User $user = null)
     {
-        if($item instanceof Product) {
+        if ($item instanceof Product) {
             $key = $this->getKeyToProduct($item, $user);
 
             $item = $this->items->get($key);
         }
 
-        if(is_string($item)) {
+        if (is_string($item)) {
             $item = $this->items->get($item);
         }
 
@@ -130,7 +130,7 @@ class Cart
      */
     public function has($item, User $user = null)
     {
-        if($item instanceof Product) {
+        if ($item instanceof Product) {
             $key = $this->getKeyToProduct($item, $user);
 
             return $this->items->has($key);
@@ -198,17 +198,17 @@ class Cart
     {
         $key = $product->id;
 
-        if (!is_null($user) || auth()->check()) {
+        if (! is_null($user) || auth()->check()) {
             $user = $user ?? auth()->user();
 
-            $key .= '_' . $user->id;
+            $key .= '_'.$user->id;
         }
 
         return $key;
     }
 
     /**
-     * Load items collection from session or from the model (DB)
+     * Load items collection from session or from the model (DB).
      *
      * @return void
      */
@@ -216,13 +216,13 @@ class Cart
     {
         $items = $this->session->get(config('cart.session'));
 
-        if(auth()->check()) {
-            if(! ($items instanceof CartList) || $items->isEmpty()) {
+        if (auth()->check()) {
+            if (! ($items instanceof CartList) || $items->isEmpty()) {
                 $items = $this->getListFromModel();
             } else {
                 $count = app(config('cart.model'))->whereUser()->sum('count');
 
-                if($count != $items->count()) {
+                if ($count != $items->count()) {
                     $items = $this->getListFromModel();
                 }
             }
@@ -240,7 +240,7 @@ class Cart
     {
         $items = new CartList;
 
-        foreach(app(config('cart.model'))->whereUser()->get() as $item) {
+        foreach (app(config('cart.model'))->whereUser()->get() as $item) {
             $items->add(CartItem::fromModel($item));
         }
 

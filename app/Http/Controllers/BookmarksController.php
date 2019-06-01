@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Bookmark;
 use App\Models\Category;
-use Evention\Services\BookmarkService;
 use Illuminate\Http\Request;
+use Evention\Services\BookmarkService;
 
 class BookmarksController extends Controller
 {
@@ -47,7 +47,7 @@ class BookmarksController extends Controller
 
         $bookmark->toggleOrCreate([
             'product_id' => $data['product_id'],
-            user_type() .'_id' => user()->id,
+            user_type().'_id' => user()->id,
         ]);
 
         BookmarkService::hasBookmark($data['product_id'], true);

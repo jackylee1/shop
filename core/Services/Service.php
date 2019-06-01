@@ -7,7 +7,7 @@ use Illuminate\Contracts\Foundation\Application;
 abstract class Service
 {
     /**
-     * Application instance
+     * Application instance.
      *
      * @var Application
      */

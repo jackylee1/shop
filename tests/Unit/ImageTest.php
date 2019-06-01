@@ -2,10 +2,10 @@
 
 namespace Tests\Unit;
 
+use Tests\TestCase;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Tests\TestCase;
 
 class ImageTest extends TestCase
 {

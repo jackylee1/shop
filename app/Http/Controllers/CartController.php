@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
-use Evention\Modules\Cart\Facades\Cart;
 use Illuminate\Http\Request;
+use Evention\Modules\Cart\Facades\Cart;
 
 class CartController extends Controller
 {
@@ -19,7 +19,7 @@ class CartController extends Controller
      */
     public function index(Request $request, Category $category)
     {
-        if($request->wantsJson()) {
+        if ($request->wantsJson()) {
             return [
                 'items' => Cart::all(),
                 'count' => Cart::count(),
@@ -62,7 +62,7 @@ class CartController extends Controller
 
         return response([
             'status' => 'success',
-            'count' => Cart::count()
+            'count' => Cart::count(),
         ], 200);
     }
 

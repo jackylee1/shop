@@ -1,7 +1,7 @@
 <?php
 
-use Faker\Generator as Faker;
 use Illuminate\Support\Str;
+use Faker\Generator as Faker;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +18,6 @@ $factory->define(App\Models\Property::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence,
         'type' => \App\Models\Property::TYPE_TEXT,
-        'rules' => 'required'
+        'rules' => 'required',
     ];
 });

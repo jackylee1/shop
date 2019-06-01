@@ -44,6 +44,7 @@ trait HasChildren
     {
         return $query->whereNull('parent_id');
     }
+
     /**
      * @param $query
      * @return mixed

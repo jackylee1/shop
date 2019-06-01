@@ -28,11 +28,11 @@ class SettingsService extends Service
      */
     public function createIfHasnt(array $data)
     {
-        if(! isset($data['key'])) {
+        if (! isset($data['key'])) {
             throw new \Exception('[Key] field required');
         }
 
-        if(! $this->has($data['key'])) {
+        if (! $this->has($data['key'])) {
             return $this->setting->create($data);
         }
     }
@@ -43,7 +43,7 @@ class SettingsService extends Service
      */
     public function createMassIfHasnt(array $data)
     {
-        foreach($data as $item) {
+        foreach ($data as $item) {
             $this->createIfHasnt($item);
         }
     }
@@ -64,7 +64,7 @@ class SettingsService extends Service
      */
     public static function get($key, $default = null)
     {
-        if(! Cache::has(self::getCacheKey($key))) {
+        if (! Cache::has(self::getCacheKey($key))) {
             Cache::forever(self::getCacheKey($key), app(self::class)->value($key, $default));
         }
 
@@ -78,7 +78,7 @@ class SettingsService extends Service
      */
     protected static function getCacheKey($key)
     {
-        return 'setting-' . $key;
+        return 'setting-'.$key;
     }
 
     /**
@@ -88,7 +88,7 @@ class SettingsService extends Service
      */
     public function value($key, $default = null)
     {
-        if(! $this->has($key)) {
+        if (! $this->has($key)) {
             return $default;
         }
 

@@ -2,9 +2,9 @@
 
 namespace Evention\Services;
 
+use Illuminate\Support\Str;
 use App\Models\User\TemporaryUser;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Support\Str;
 
 class TemporaryUserService extends Service
 {
@@ -87,7 +87,7 @@ class TemporaryUserService extends Service
     }
 
     /**
-     * Get the first record matching the token or create it
+     * Get the first record matching the token or create it.
      *
      * @param null|string $token
      *
@@ -95,7 +95,7 @@ class TemporaryUserService extends Service
      */
     public function getByTokenOrCreate($token = null)
     {
-        if(! is_null($token)) {
+        if (! is_null($token)) {
             if (! is_null($user = $this->getByToken($token))) {
                 return $this->user = $user;
             }
@@ -105,7 +105,7 @@ class TemporaryUserService extends Service
     }
 
     /**
-     * Create new TemporaryUser
+     * Create new TemporaryUser.
      *
      * @param $token
      *
@@ -114,7 +114,7 @@ class TemporaryUserService extends Service
     public function create($token)
     {
         return $this->user = $this->model->create([
-            'token' => $token
+            'token' => $token,
         ]);
     }
 

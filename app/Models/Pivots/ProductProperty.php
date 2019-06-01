@@ -15,7 +15,7 @@ class ProductProperty extends Pivot
     public function getValueAttribute($value)
     {
         return $this->property->type == Property::TYPE_SELECT_MULTI
-            ? explode(", ", $value)
+            ? explode(', ', $value)
             : $value;
     }
 
