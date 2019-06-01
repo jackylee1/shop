@@ -22,7 +22,7 @@ class CartController extends Controller
             ];
         }
 
-        dd(Cart::all());
+        //
     }
 
     /**

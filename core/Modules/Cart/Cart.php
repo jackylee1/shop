@@ -207,6 +207,11 @@ class Cart
         return $key;
     }
 
+    /**
+     * Load items collection from session or from the model (DB)
+     *
+     * @return void
+     */
     protected function loadItems()
     {
         $items = $this->session->get(config('cart.session'));
