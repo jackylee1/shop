@@ -17,6 +17,8 @@ class OrderController extends Controller
 
         $user = optional(auth()->user());
 
-        return view('order.index', compact('cart', 'user'));
+        $price = Cart::price();
+
+        return view('order.index', compact('cart', 'user', 'price'));
     }
 }
