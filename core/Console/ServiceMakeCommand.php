@@ -32,7 +32,7 @@ class ServiceMakeCommand extends GeneratorCommand
     /**
      * Execute the console command.
      *
-     * @return void
+     * @return bool|null
      */
     public function handle()
     {
@@ -45,7 +45,7 @@ class ServiceMakeCommand extends GeneratorCommand
         }
 
         if ($this->option('facade')) {
-            $this->createServiceFactory();
+            $this->createServiceFacade();
         }
     }
 

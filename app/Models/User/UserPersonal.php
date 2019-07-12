@@ -2,13 +2,12 @@
 
 namespace App\Models\User;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Evention\Elequent\Traits\Relations\HasUser;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable implements MustVerifyEmail
+class UserPersonal extends Model
 {
-    use Notifiable;
+    use HasUser;
 
     /** The attributes that are mass assignable.
      *
@@ -73,40 +72,4 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         //
     ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
-    protected $dispatchesEvents = [
-        //
-    ];
-
-    /**
-     * full_name attribute.
-     *
-     * @return string
-     */
-    public function getFullNameAttribute()
-    {
-        return $this->name.' '.$this->surname;
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne|UserPersonal
-     */
-    public function personal()
-    {
-        return $this->hasOne(UserPersonal::class);
-    }
 }

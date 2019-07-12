@@ -15,8 +15,8 @@ class OrderController extends Controller
     {
         $cart = Cart::all();
 
-        $email = auth()->check() ? auth()->user()->email : null;
+        $user = optional(auth()->user());
 
-        return view('order.index', compact('cart', 'email'));
+        return view('order.index', compact('cart', 'user'));
     }
 }
