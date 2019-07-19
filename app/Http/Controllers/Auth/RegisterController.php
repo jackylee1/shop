@@ -6,6 +6,7 @@ use App\Models\User\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -58,7 +59,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => [Rule::requiredIf(function () { return ! request()->has('phone'); }), 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => [Rule::requiredIf(function () { return ! request()->has('email'); }), 'string', 'max:13', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
@@ -74,7 +76,8 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
-            'email' => $data['email'],
+            'email' => $data['email'] ?? null,
+            'phone' => $data['phone'] ?? null,
             'password' => bcrypt($data['password']),
         ]);
     }
