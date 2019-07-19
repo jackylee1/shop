@@ -19,7 +19,7 @@
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -33,7 +33,7 @@
 
                                 @error('surname')
                                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ $errors->first('surname') }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -47,7 +47,21 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('email') }}" required autocomplete="phone">
+
+                                @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('phone') }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -61,7 +75,7 @@
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @enderror
                             </div>
