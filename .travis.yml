@@ -24,7 +24,7 @@ services:
 
 before_install:
   - cp .env.travis .env
-  - if [[ $TRAVIS_PHP_VERSION != 7.1 ]] ; then phpenv config-rm xdebug.ini; fi
+#  - if [[ $TRAVIS_PHP_VERSION != 7.1 ]] ; then phpenv config-rm xdebug.ini; fi
   - php -v
   - echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
