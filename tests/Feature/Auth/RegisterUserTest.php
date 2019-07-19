@@ -13,6 +13,22 @@ class RegisterUserTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function unauthorized_user_may_access_to_register_page()
+    {
+        $this->get(route('register'))
+            ->assertViewIs('auth.register');
+    }
+
+    /** @test */
+    public function authorized_user_may_not_access_to_register_page()
+    {
+        $this->signIn();
+
+        $this->get(route('register'))
+            ->assertRedirect(route('home'));
+    }
+
+    /** @test */
     public function users_can_register_an_account_using_email()
     {
         $response = $this->post(route('register'), $this->validParams(['email' => 'johndoe@example.com']));
