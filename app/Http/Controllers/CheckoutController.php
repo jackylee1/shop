@@ -6,7 +6,7 @@ use Evention\Modules\Cart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class OrderController extends Controller
+class CheckoutController extends Controller
 {
     /**
      * @return Response
@@ -19,6 +19,6 @@ class OrderController extends Controller
 
         $price = Cart::price();
 
-        return view('order.index', compact('cart', 'user', 'price'));
+        return view('checkout.index', compact('cart', 'user', 'price'));
     }
 }

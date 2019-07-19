@@ -24,7 +24,7 @@
                                 </p>
                             </div>
                             <div class="col text-right">
-                                <button class="btn btn-success">Checkout</button>
+                                <a href="{{ route('checkout.index') }}" class="btn btn-success">Checkout</a>
                             </div>
                         </div>
                     </div>

@@ -141,42 +141,44 @@
                 </form>
             </div>
             <div class="col-md-4 order-md-2 mb-4">
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Your cart</span>
-                    <span class="badge badge-secondary badge-pill">{{ Cart::count() }}</span>
-                </h4>
-                <ul class="list-group mb-3">
-                    @foreach($cart as $item)
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div class="w-100">
-                            <h6 class="my-0">
-                                <a href="{{ route('products.show', $item->product) }}">{{ $item->product->title }}</a>
-                            </h6>
-                            <div class="row">
-                                <div class="col">
-                                    <small class="text-muted">Quantity: {{ $item->count }}</small>
-                                </div>
-                                <div class="col text-right">
-                                    <span class="text-muted">{{ price($item->price()) }}$</span>
+                <div class="sticky-top">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Your cart</span>
+                        <span class="badge badge-secondary badge-pill">{{ Cart::count() }}</span>
+                    </h4>
+                    <ul class="list-group mb-3">
+                        @foreach($cart as $item)
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div class="w-100">
+                                <h6 class="my-0">
+                                    <a href="{{ route('products.show', $item->product) }}">{{ $item->product->title }}</a>
+                                </h6>
+                                <div class="row">
+                                    <div class="col">
+                                        <small class="text-muted">Quantity: {{ $item->count }}</small>
+                                    </div>
+                                    <div class="col text-right">
+                                        <span class="text-muted">{{ price($item->price()) }}$</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    @endforeach
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total (USD)</span>
-                        <strong>{{ price($price) }}$</strong>
-                    </li>
-                </ul>
+                        </li>
+                        @endforeach
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (USD)</span>
+                            <strong>{{ price($price) }}$</strong>
+                        </li>
+                    </ul>
 
-                <form class="card p-2">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Promo code">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-secondary">Redeem</button>
+                    <form class="card p-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Promo code">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-secondary">Redeem</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

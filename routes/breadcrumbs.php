@@ -32,7 +32,7 @@ Breadcrumbs::for('cart.index', function ($trail) {
     $trail->push('My shopping cart', route('cart.index'));
 });
 
-Breadcrumbs::for('order.index', function ($trail) {
+Breadcrumbs::for('checkout.index', function ($trail) {
     $trail->parent('home');
-    $trail->push('Checkout', route('order.index'));
+    $trail->push('Checkout', route('checkout.index'));
 });
