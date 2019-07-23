@@ -25,7 +25,7 @@ window.Vue = require('vue');
 Vue.component('bookmark-button', require('./components/BookmarkButtonComponent.vue').default);
 
 Vue.component('cart-button', require('./components/Cart/CartButtonComponent.vue').default);
-Vue.component('product-cart-button', require('./components/Cart/ProductCartButtom.vue').default);
+Vue.component('product-cart-button', require('./components/Cart/ProductCartButton.vue').default);
 Vue.component('cart-remove-button', require('./components/Cart/CartItemRemoveButtonComponent.vue').default);
 Vue.component('cart-item-count', require('./components/Cart/CartItemCount.vue').default);
 Vue.component('navbar-cart', require('./components/Cart/NavbarCartComponent.vue').default);
