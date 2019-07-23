@@ -24,6 +24,7 @@ class ReplyReviewRequest extends FormRequest
     public function rules()
     {
         return [
+            'parent_id' => ['nullable', 'exists:reviews,id'],
             'name' => ['required', 'string', 'min:2', 'max:256'],
             'message' => ['required', 'string', 'min:50', 'max:2000'],
         ];

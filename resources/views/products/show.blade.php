@@ -110,8 +110,9 @@
                 @foreach($product->published_reviews as $review)
                     @include('reviews._review')
                 @endforeach
-                <form method="POST" action="{{ route('reviews.store', $product) }}" class="row border-top pt-4">
+                <form method="POST" action="{{ route('reviews.store', $product) }}" class="row border-top pt-4 reply-review-form">
                     @csrf
+                    <input type="hidden" name="parent_id" value="{{ old('parent_id') }}">
                     <div class="form-group col-12">
                         <input type="text" name="name" class="form-control @if($errors->has('name')) is-invalid @endif" placeholder="Your name" value="{{ old('name') ?? user()->name }}">
                         <div class="invalid-feedback">

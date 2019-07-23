@@ -1,4 +1,4 @@
-<div class="@if($review->parent_id) review-reply @else review @endif">
+<div class="@if($review->parent_id) review-reply @else review @endif" id="review-{{ $review->id  }}">
     <div class="card mb-4 @if($review->parent_id) ml-5 @endif">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div>
@@ -11,7 +11,7 @@
         </div>
         <div class="card-footer text-muted d-flex justify-content-between align-items-center">
             <div class="review-controls">
-                <a href="#" class="btn btn-sm btn-link" data-parent-id="{{ $review->parent_id }}">
+                <a href="#" class="btn btn-sm btn-link review-reply-btn" data-review-id="{{ $review->id }}">
                     <i class="fas fa-reply"></i> Reply
                 </a>
             </div>
@@ -24,5 +24,5 @@
 </div>
 
 @foreach($review->children as $child)
-    @include('reivews._review', ['review' => $child])
+    @include('reviews._review', ['review' => $child])
 @endforeach

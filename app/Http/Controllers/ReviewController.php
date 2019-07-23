@@ -15,12 +15,14 @@ class ReviewController extends Controller
      */
     public function store(Product $product, ReplyReviewRequest $request)
     {
-        $product->reviews()->create([
+        $review = $product->reviews()->create([
+            'parent_id' => $request->get('parent_id'),
             'user_name' => $request->get('name'),
             'text' => $request->get('message'),
             'user_id' => auth()->id(),
         ]);
 
-        return back()->with('success', 'Review successfully added');
+        return redirect(route('products.show', $product) . '#review-' . $review->id)
+            ->with('success', 'Review successfully added');
     }
 }
