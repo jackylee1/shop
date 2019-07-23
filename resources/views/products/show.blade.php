@@ -62,9 +62,7 @@
                     <product-cart-button product-id="{{ $product->id }}"
                                          :status="@bool($product->inCart())"></product-cart-button>
 
-                    <a href="#" class="btn btn-secondary d-flex justify-content-center align-items-baseline">
-                        <i class="fa fa-shopping-cart mr-2"></i> <span>Buy now</span>
-                    </a>
+                    <product-buy-now-button product-id="{{ $product->id }}"></product-buy-now-button>
                 </div>
 
                 <ul class="nav flex-column mt-4 nav-pills">
