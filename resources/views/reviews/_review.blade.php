@@ -2,7 +2,7 @@
     <div class="card mb-4 @if($review->parent_id) ml-5 @endif">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div>
-                {{ $review->user->full_name }}
+                {{ $review->user_name }}
             </div>
             <p class="card-text">{{ $review->created_at->diffForHumans() }}</p>
         </div>

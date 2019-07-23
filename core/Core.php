@@ -6,9 +6,10 @@ use Evention\Contracts\CoreContract;
 use Evention\Providers\ModulesServiceProvider;
 use Evention\Providers\CommandsServiceProvider;
 use Evention\Providers\ServicesServiceProvider;
+use Evention\Providers\ValidatorsServiceProvider;
 use Illuminate\Contracts\Foundation\Application;
 
-class Core
+class Core implements CoreContract
 {
     /**
      * The Evention Shop CMS version.
@@ -73,6 +74,7 @@ class Core
         $this->app->register(new ServicesServiceProvider($this->app));
         $this->app->register(new CommandsServiceProvider($this->app));
         $this->app->register(new ModulesServiceProvider($this->app));
+        $this->app->register(new ValidatorsServiceProvider($this->app));
     }
 
     /**

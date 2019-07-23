@@ -29,6 +29,8 @@ Route::patch('cart/{key}/{type}', 'CartController@update')->name('cart.update');
 
 Route::get('checkout', 'CheckoutController@index')->name('checkout.index');
 
+Route::post('reviews/{product}', 'ReviewController@store')->name('reviews.store');
+
 //Route::resource('products', 'ProductsController');
 //Route::resource('categories', 'CategoriesController');
 //Route::resource('bookmarks', 'BookmarksController');

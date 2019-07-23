@@ -107,9 +107,27 @@
             </div>
 
             <div class="col-md-8 border-top pt-4 border-right reviews">
-                @foreach($product->reviews as $review)
-                    @include('reivews._review')
+                @foreach($product->published_reviews as $review)
+                    @include('reviews._review')
                 @endforeach
+                <form method="POST" action="{{ route('reviews.store', $product) }}" class="row border-top pt-4">
+                    @csrf
+                    <div class="form-group col-12">
+                        <input type="text" name="name" class="form-control @if($errors->has('name')) is-invalid @endif" placeholder="Your name" value="{{ old('name') ?? user()->name }}">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('name') }}
+                        </div>
+                    </div>
+                    <div class="form-group col-12">
+                        <textarea rows="3" name="message" class="form-control @if($errors->has('message')) is-invalid @endif" placeholder="Your review...">{{ old('message') }}</textarea>
+                        <div class="invalid-feedback">
+                            {{ $errors->first('message') }}
+                        </div>
+                    </div>
+                    <div class="form-group col-12 text-center">
+                        <button class="btn btn-success" type="submit">Send</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
